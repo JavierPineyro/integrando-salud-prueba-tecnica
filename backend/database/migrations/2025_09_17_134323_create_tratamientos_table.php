@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('paciente_id')->constrained('pacientes')->onDelete('cascade');
             $table->foreignId('pet_id')->constrained('pets')->onDelete('cascade');
-            $table->date('fecha_inicio')->default(DB::raw('CURRENT_DATE'));
+            $table->date('fecha_inicio')->default(DB::raw('(CURRENT_DATE)'));
             $table->timestamps();
         });
     }
