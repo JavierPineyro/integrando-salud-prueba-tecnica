@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->enum('color', ['verde', 'yellow', 'ambar', 'rojo',]);
-            $table->integer('intesidad');
-            $table->integer('duracion_minutos');
+            $table->unsignedInteger('intesidad');
+            $table->unsignedInteger('duracion_minutos');
             $table->boolean('ayuno')->default(false);
             $table->string('observaciones')->nullable();
             $table->boolean('activo')->default(true);
