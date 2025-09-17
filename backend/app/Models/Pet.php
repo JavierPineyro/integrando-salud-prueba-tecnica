@@ -16,6 +16,14 @@ class Pet extends Model
         'observaciones'
     ];
 
+    protected $casts = [
+       'ayuno' => 'boolean',         
+       'activo' => 'boolean',        
+       'intensidad' => 'integer',       
+       'duracion_minutos' => 'integer', 
+    ];
+
+
     public function tratamientos()
     {
         return $this->hasMany(Tratamiento::class);

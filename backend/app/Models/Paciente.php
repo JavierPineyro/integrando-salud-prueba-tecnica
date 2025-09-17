@@ -14,6 +14,11 @@ class Paciente extends Model
         'dni',
     ];
 
+    protected $casts = [
+        'fecha_nacimiento' => 'date'
+    ];
+
+
     public function tratamientos()
     {
         return $this->hasMany(Tratamiento::class);

@@ -11,6 +11,11 @@ class Tratamiento extends Model
         'pet_id',
         'fecha_inicio',
     ];
+
+    protected $casts = [
+        'fecha_inicio' => 'date',
+    ];
+
     
     public function paciente()
     {
