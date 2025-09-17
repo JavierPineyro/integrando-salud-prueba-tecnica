@@ -13,4 +13,9 @@ class Paciente extends Model
         'sexo',
         'dni',
     ];
+
+    public function tratamientos()
+    {
+        return $this->hasMany(Tratamiento::class);
+    }
 }
