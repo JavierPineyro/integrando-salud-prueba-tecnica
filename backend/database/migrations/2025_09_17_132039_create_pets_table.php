@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('nombre');
             $table->enum('color', ['verde', 'yellow', 'ambar', 'rojo',]);
             $table->integer('intesidad');
-            $table->integer('duracion_minutos')->positive();
-            $table->boolean('ayuno');
+            $table->integer('duracion_minutos');
+            $table->boolean('ayuno')->default(false);
             $table->string('observaciones')->nullable();
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

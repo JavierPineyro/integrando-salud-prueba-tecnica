@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("nombre", 100);
             $table->string("apellido", 100);
-            $table->integer("dni"); // Es posible que haya gente con DNI iguales? creo que si
+            $table->integer("dni", 12); // Es posible que haya gente con DNI iguales? creo que si
             $table->date("fecha_nacimiento");
             $table->enum("sexo", ["M", "F"]);
             $table->timestamps();
