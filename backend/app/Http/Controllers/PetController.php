@@ -10,9 +10,9 @@ class PetController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $con_inactivos = request()->query('con_inactivos', 'false') === 'true';
+        $con_inactivos = $request->query('con_inactivos', '0') === '1';
         $pets = Pet::query();
 
         if (!$con_inactivos) {
