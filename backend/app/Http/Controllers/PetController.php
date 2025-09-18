@@ -23,6 +23,12 @@ class PetController extends Controller
         return response()->json($lista_pets);
     }
 
+    public function listAllActive()
+    {
+        $pets = Pet::where('activo', true)->select('id', 'nombre')->get();
+        return response()->json($pets);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
