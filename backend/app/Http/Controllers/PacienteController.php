@@ -12,8 +12,8 @@ class PacienteController extends Controller
      */
     public function index(Request $request)
     {
-        $apellido = request->query('apellido');
-        $dni = request->query('dni');
+        $apellido = $request->query('apellido');
+        $dni = $request->query('dni');
         
         $pacientes = Paciente::query();
 
