@@ -12,7 +12,7 @@ class Pet extends Model
         'activo',
         'ayuno', 
         'duracion_minutos', 
-        'intesidad', 
+        'intensidad', 
         'observaciones'
     ];
 

@@ -37,7 +37,7 @@ class PetController extends Controller
         $validatedData = $request->validate([
             'nombre' => 'required|string|max:255',
             'color' => 'required|in:verde,amarillo,ambar,rojo',
-            'intesidad' => 'required|integer|between:1,10',
+            'intensidad' => 'required|integer|between:1,10',
             'duracion_minutos' => 'required|integer|min:1',
             'ayuno' => 'sometimes|boolean',
             'observaciones' => 'sometimes|string|nullable',
@@ -76,7 +76,7 @@ class PetController extends Controller
         $validatedData = $request->validate([
             'nombre' => 'sometimes|string|max:255',
             'color' => 'sometimes|in:verde,amarillo,ambar,rojo',
-            'intesidad' => 'sometimes|integer|between:1,10',
+            'intensidad' => 'sometimes|integer|between:1,10',
             'duracion_minutos' => 'sometimes|integer|min:1',
             'ayuno' => 'sometimes|boolean',
             'observaciones' => 'sometimes|string|nullable',
