@@ -5,11 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacientes</title>
     <link rel="stylesheet" href="styles.css">
+    
 </head>
 <body>
-    <h1>Pacientes</h1>
-    <script type="module">
-        console.log("Hola mundo");
-    </script>
+    <header class="layout-header">
+        <div class="header-content-logo">
+            <div class="header-logo"></div>
+            <span class="header-title">Gestión Clínica</span>
+        </div>
+        <nav class="header-content-nav">
+            <a href="#" class="nav-link">Inicio</a>
+            <a href="#" class="nav-link">Lista Pacientes</a>
+            <a href="#" class="nav-link">Nuevo Paciente</a>
+            <a href="#" class="nav-link">Tipos de PET</a>
+        </nav>
+    </header>
+    <main class="layout-main">
+        <div class="main-title-section">
+            <div class="header-logo"></div>
+            <h1>Sistema de Gestión Clínica</h1>
+        </div>
+        <p class="main-description-section">
+            Herramienta profesional para la gestión de pacientes y tratamientos.
+        </p>
+        <section class="main-cards-section">
+            <div class="card">
+                <h3 class="card-title">Registrar Paciente</h3>
+                <p class="card-description">Agregar nuevos pacientes al sistema</p>
+                <a href="/nuevo-paciente.html">Nuevo Paciente</a>
+            </div>
+            <div class="card green">
+                <h3 class="card-title green">Lista de Pacientes</h3>
+                <p class="card-description">Ver buscar y gestionar pacientes existentes</p>
+                <a class="green" href="/lista-pacientes.html">Ver Pacientes</a>
+            </div>
+            <div class="card purple">
+                <h3 class="card-title purple">Tipos de PET</h3>
+                <p class="card-description">Configurar y gestionar los tipos de PET disponibles</p>
+                <a class="purple" href="/tipos-pet.html">Ver Tipos de PET</a>
+            </div>
+            <div class="card orange">
+                <h3 class="card-title orange">Tratamientos</h3>
+                <p class="card-description">Registrar y gestionar tratamientos de pacientes</p>
+                <a class="orange" href="/tratamientos.html">Ver Tratamientos</a>
+            </div>
+        </section>
+
+        <section class="main-features-section">
+            <h2>Funcionalidades del sistema</h2>
+            <div class="features-cards">
+                <div class="card">
+                    <h5>Gestión de pacientes</h5>
+                    <p>✔ Registro completo de datos personales</p>
+                    <p>✔ Búsqueda avanzada de pacientes</p>
+                    <p>✔ Modificación de registros</p>
+                    <p>✔ Registro y seguimiento de tratamientos</p>
+                </div>
+                <div class="card">
+                    <h5>Gestión de pacientes</h5>
+                    <p>✔ Registro completo de datos personales</p>
+                    <p>✔ Búsqueda avanzada de pacientes</p>
+                    <p>✔ Modificación de registros</p>
+                    <p>✔ Registro y seguimiento de tratamientos</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="layout-footer">
+        Prueba Técnica - Sistema de Gestión Clínica - 2025
+    </footer>
 </body>
 </html>
