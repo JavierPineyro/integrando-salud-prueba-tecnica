@@ -42,6 +42,8 @@ class PacienteController extends Controller
             'sexo' => 'required|in:M,F',
         ]);
 
+        // Si falla lanza un error 500 automáticamente creo
+        // no voy a poner try catch para esto, demasiado boilerplate
         $paciente = Paciente::create($validatedData);
         return response()->json($paciente, 201);
 
@@ -77,7 +79,10 @@ class PacienteController extends Controller
             'sexo' => 'sometimes|in:M,F',
         ]);
 
-        $paciente->update($validatedData);
+        $is_success = $paciente->update($validatedData);
+        if (!$is_success) {
+            return response()->json(['message' => 'Error al actualizar el paciente'], 422);
+        }
         return response()->json($paciente);
     }
 
