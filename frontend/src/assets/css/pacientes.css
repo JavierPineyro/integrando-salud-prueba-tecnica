@@ -1,0 +1,72 @@
+.listar_page__container{
+    padding: 2rem 3rem;
+    
+    & .listar_page__hero_section{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: .8rem;
+        margin-bottom: 2rem;
+    }
+
+    & .listar_page__users_icon{
+        stroke: var(--primary-color);
+        fill: none;
+        width: 35px;
+        height: 35px;
+    }
+
+    & .listar_page__title_divider{
+        display: flex;
+        gap: 1rem;
+        align-items:center;
+    }
+
+    & .listar_page__title{
+        color: var(--text-color);
+    }
+    
+    & .listar_page__description{
+        color: var(--text-gray);
+    }
+    
+    & .listar_page__main_button{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        gap: .3rem;
+        background-color: var(--primary-color);
+        color: var(--background-white);
+        text-decoration: none;
+		border-radius: 8px;
+		transition: background-color 0.2s ease;
+		text-align: center;
+		padding: .5rem;
+		&:hover {
+			color: var(--background-white);
+			background-color: var(--secondary-color);
+		} 
+		
+		& svg{
+		    width: 20px;
+		    height: 20px;
+		}
+    }
+    
+    & .listar_page__dashboard_head{
+        background-color: orange;
+        display: grid;
+        grid-template-columns: 4;
+        & #filtro{
+            
+        }
+    }
+
+}
+
+
+
+
+
+
+

@@ -58,7 +58,7 @@
 	& .card-description{
 		color: var(--text-gray);
 		font-weight: 500;
-		font-size: 1rem;
+		font-size: .9rem;
 		text-align: left;
 		margin-bottom: 1.6rem;
 	}
@@ -69,14 +69,12 @@
 		border: 2px solid;
 		border-color: var(--primary-color);
 		font-weight: 500;
-		/*padding: .1rem .5rem;*/
 		border-radius: 8px;
 		transition: background-color 0.2s ease;
 		text-align: center;
 		display: inline-block;
-		/*margin-top: .9rem;*/
 		margin-top: auto;
-		padding: .55rem;
+		padding: .5rem;
 		width: 100%;
 		&:hover {
 			color: var(--background-white);
@@ -87,7 +85,7 @@
 
 	& .card-title.green{
 		color: var(--green-color);
-		font-weight: 700;
+		font-weight: 600;
 	}
 
 	& a.green{
@@ -102,7 +100,7 @@
 
 	& .card-title.purple{
 		color: var(--purple-color);
-		font-weight: 700;
+		font-weight: 600;
 	}
 
 	& a.purple{
@@ -118,7 +116,7 @@
 
 	& .card-title.orange{
 		color: var(--orange-color);
-		font-weight: 700;
+		font-weight: 600;
 	}
 	& a.orange{
 		background-color: var(--background-white);
@@ -130,17 +128,6 @@
 			color: var(--background-white);
 		}
 	}
-}
-
-.layout-footer {
-	padding: 1rem 2rem;
-	text-align: center;
-	font-size: .9rem;
-	color: #333;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-top: 1px solid var(--border-color);
 }
 
 .main-features-section {
@@ -170,12 +157,12 @@
 		gap: .5rem;
 		padding: 2rem;
 		width: 100%;
-		max-width: 25rem;
+		max-width: 28rem;
 
 		& p{
 			color: var(--text-gray);
 			font-weight: 500;
-			font-size: 1.1rem;
+			font-size: 1rem;
 			text-align: left;
 		}
 	}

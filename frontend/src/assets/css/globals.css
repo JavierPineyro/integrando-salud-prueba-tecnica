@@ -1,23 +1,26 @@
 @font-face {
-    2   font-family: 'Geist Sans';
-    3   src: url('../fonts/geist-sans-regular.woff2') format('woff2');
-    4   font-weight: 400;
-    5   font-style: normal;
-    6 }
-    7 
-    8 @font-face {
-    9   font-family: 'Geist Sans';
-   10   src: url('../fonts/geist-sans-semibold.woff2') format('woff2');
-   11   font-weight: 600;
-   12   font-style: normal;
-   13 }
-   14 
-   15 @font-face {
-   16   font-family: 'Geist Sans';
-   17   src: url('../fonts/geist-sans-bold.woff2') format('woff2');
-   18   font-weight: 700;
-   19   font-style: normal;
-   20 }
+  font-family: 'Geist Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-400-normal.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Geist Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-500-normal.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Geist Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-600-normal.woff2) format('woff2');
+}
 
 * {
 	box-sizing: border-box;
@@ -93,5 +96,14 @@ header > .header-content-nav{
 	background-color: var(--background-main);
 }
 
-
+.layout-footer {
+	padding: 1rem 2rem;
+	text-align: center;
+	font-size: .9rem;
+	color: #333;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid var(--border-color);
+}
 
