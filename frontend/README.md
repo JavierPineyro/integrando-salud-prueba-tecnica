@@ -4,11 +4,12 @@ TODO:
 
 ## Pacientes
 [x] maquetar listar pacientes page 
-[] hidratar página pacientes page
+[x] hidratar página pacientes page
 [] maquetar formulario de crear paciente
 [] hidratar formulario crear paciente
 [] maquetar formulario editar paciente
 [] hidratar formulario editar paciente
+[] agregar que show endpoint devuelva al paciente Y sus tratamientos
 [] maquetar pagína info paciente
 
 ## Pets
