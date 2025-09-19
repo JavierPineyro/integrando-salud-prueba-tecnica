@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" view-transition>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de gestión médica</title>
     <link rel="stylesheet" href="./assets/css/globals.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
 </head>
 <body>
@@ -75,5 +76,17 @@
     <footer class="layout-footer">
         Prueba Técnica - Sistema de Gestión Clínica - 2025
     </footer>
+    <script>
+        if (document.startViewTransition) {
+              document.querySelectorAll("a").forEach(a => {
+                a.addEventListener("click", e => {
+                  e.preventDefault();
+                  document.startViewTransition(() => {
+                    window.location = a.href;
+                  });
+                });
+              });
+            }
+    </script>
 </body>
 </html>

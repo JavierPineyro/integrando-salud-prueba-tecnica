@@ -158,7 +158,7 @@
         min-height: 300px;
 
         & .paciente_table_title{
-            font-size: 1rem;
+            font-size: .9rem;
             font-weight: 600;
             margin-bottom: .1rem;
             color: var(--primary-color);
@@ -178,7 +178,7 @@
                 padding: .4rem 1rem;
                 text-align: left;
                 border-bottom: 1px solid var(--border-color);
-                font-size: .8rem;
+                font-size: .95rem;
                 color: var(--text-color);
             }
 
@@ -189,15 +189,20 @@
             & tbody tr:hover{
                 background-color: #f9f9f9;
             }
+            
+            & tbody tr td {
+              max-width: 200px;       /* límite de ancho */
+              white-space: nowrap;    /* evita saltos de línea */
+              overflow: hidden;       /* oculta el contenido que sobra */
+              text-overflow: ellipsis;
+            }
 
-            & tbody .action_buttons{
+            & tbody .action_button{
                 display: flex;
-                gap: .7rem;
+                gap: .1rem;
+                background-color: red;
 
-                & #edit_button, #show_button{
-                    background: none;
-                    border: none;
-                    cursor: pointer;
+                & #edit_button, & #show_button{
                     padding: .2rem;
                     text-decoration: none;
                     text-align: end;
@@ -217,12 +222,56 @@
             }
         }
     }
+    
+    & #pacientes_table .action-button a {
+        text-decoration: none;
+    }
+    
+
+    & #pacientes_table .action-button .show-button svg {
+        stroke: var(--primary-color);
+    }
+    
+    & #pacientes_table .action-button .show-button:hover{
+            & svg{
+               stroke: #333;
+            }
+    }
+
+    & #pacientes_table .action-button .edit-button svg {
+        stroke: orange;
+    }
+    
+     & #pacientes_table .action-button .edit-button:hover{
+            & svg{
+                stroke: #eb7734;
+            }
+    }
+    
+    & .pagination{
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        margin-top: 1.5rem;
+        
+        & button {
+            background-color: lightgray;
+            padding: .5rem .8rem;
+            border: none;
+            border-radius: 8px;
+            transition: backgound-color 0.5s ease-in;
+            cursor: pointer;
+            width: 110px;
+        }
+        
+        & button:hover {
+            background-color: #eee;
+            padding: .5rem .8rem;
+            border: none;
+            border-radius: 8px;
+        }
+    }
 
 }
-
-
-
-
-
 
 

@@ -1,7 +1,9 @@
+Serve: python3 -m http.serve 3000
+
 TODO:
 
 ## Pacientes
-[] maquetar listar pacientes page 
+[x] maquetar listar pacientes page 
 [] hidratar página pacientes page
 [] maquetar formulario de crear paciente
 [] hidratar formulario crear paciente
