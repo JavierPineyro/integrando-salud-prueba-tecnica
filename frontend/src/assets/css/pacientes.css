@@ -54,11 +54,167 @@
     }
     
     & .listar_page__dashboard_head{
-        background-color: orange;
-        display: grid;
-        grid-template-columns: 4;
+        display: grid; 
+        grid-template-columns: repeat(4, 1fr); 
+        grid-template-rows: 1fr; gap: 1rem; 
+        align-items: center;
+
+        & > .card_pacientes {
+            border-radius: 8px;
+            padding: 1.5rem;
+            height: 100%;
+            background-color: var(--background-white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: var(--text-color);
+
+            & > .total_pacientes_card_title{
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+            & svg{
+                width: 30px;
+                height: 30px;
+                stroke: var(--primary-color);
+                fill: none;
+                text-align: center;
+            }
+            & .total_pacientes_card_number{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: auto;
+                font-size: 3rem;
+                font-weight: bold;
+                color: var(--text-color);
+            }
+
+            & .total_pacientes_card_title{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .5rem;
+                width: 100%;
+                text-align: center;
+                color: var(--text-color);
+            }
+        }
+
         & #filtro{
-            
+            grid-column: 1 / span 2;
+        }
+
+        & #total_pacientes{
+            grid-column: 3;
+        }
+
+        & #total_resultados{
+            grid-column: 4;
+        }
+
+        #form_filter{
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+            & input{
+                flex: 1;
+                padding: .3rem .5rem;
+                border: 1px solid var(--border-color);
+                border-radius: 4px;
+                font-size: .9rem;
+            }
+
+            & button{
+                background-color: var(--primary-color);
+                color: var(--background-white);
+                border: none;
+                font-size: 1rem;
+                padding: .4rem 1rem;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+
+                &:hover {
+                    background-color: var(--secondary-color);
+                }
+            }
+        }
+    }
+
+    & #total_pacientes, #total_resultados{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    & .listar_page__table_section{
+        margin-top: 2.5rem;
+        padding: 1.5rem;
+        border-radius: 8px;
+        background-color: var(--background-white);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        min-height: 300px;
+
+        & .paciente_table_title{
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: .1rem;
+            color: var(--primary-color);
+        }
+
+        & .paciente_table_description{
+            font-size: .8rem;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        & #pacientes_table{
+            width: 100%;
+            border-collapse: collapse;
+
+            & th, td{
+                padding: .4rem 1rem;
+                text-align: left;
+                border-bottom: 1px solid var(--border-color);
+                font-size: .8rem;
+                color: var(--text-color);
+            }
+
+            & th{
+                font-weight: 600;
+            }
+
+            & tbody tr:hover{
+                background-color: #f9f9f9;
+            }
+
+            & tbody .action_buttons{
+                display: flex;
+                gap: .7rem;
+
+                & #edit_button, #show_button{
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    padding: .2rem;
+                    text-decoration: none;
+                    text-align: end;
+                }
+
+                & #edit_button svg{
+                    stroke: var(--primary-color);
+                    width: 15px;
+                    height:15px;
+                }
+
+                & #show_button svg{
+                    stroke: var(--text-color);
+                    width: 20px;
+                    height: 20px;
+                }
+            }
         }
     }
 
