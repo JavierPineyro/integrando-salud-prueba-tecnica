@@ -1,9 +1,29 @@
+@font-face {
+    2   font-family: 'Geist Sans';
+    3   src: url('../fonts/geist-sans-regular.woff2') format('woff2');
+    4   font-weight: 400;
+    5   font-style: normal;
+    6 }
+    7 
+    8 @font-face {
+    9   font-family: 'Geist Sans';
+   10   src: url('../fonts/geist-sans-semibold.woff2') format('woff2');
+   11   font-weight: 600;
+   12   font-style: normal;
+   13 }
+   14 
+   15 @font-face {
+   16   font-family: 'Geist Sans';
+   17   src: url('../fonts/geist-sans-bold.woff2') format('woff2');
+   18   font-weight: 700;
+   19   font-style: normal;
+   20 }
 
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: 'Georgia', 'Times New Roman', serif;
+	font-family: 'Geist Sans','Georgia', 'Times New Roman', serif;
 }
 
 :root {
