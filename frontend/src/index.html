@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacientes</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sistema de gestión médica</title>
+    <link rel="stylesheet" href="./assets/css/globals.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     
 </head>
 <body>
@@ -14,10 +15,10 @@
             <span class="header-title">Gestión Clínica</span>
         </div>
         <nav class="header-content-nav">
-            <a href="#" class="nav-link">Inicio</a>
-            <a href="#" class="nav-link">Lista Pacientes</a>
-            <a href="#" class="nav-link">Nuevo Paciente</a>
-            <a href="#" class="nav-link">Tipos de PET</a>
+            <a href="./index.html" class="nav-link">Inicio</a>
+            <a href="./pages/pacientes/listar.html" class="nav-link">Lista Pacientes</a>
+            <a href="./pages/pacientes/crear.html" class="nav-link">Nuevo Paciente</a>
+            <a href="./pages/pets/crear.html" class="nav-link">Tipos de PET</a>
         </nav>
     </header>
     <main class="layout-main">
@@ -26,7 +27,7 @@
             <h1>Sistema de Gestión Clínica</h1>
         </div>
         <p class="main-description-section">
-            Herramienta profesional para la gestión de pacientes y tratamientos.
+            Herramienta profesional para la gestión de pacientes y tratamientos con equipos PET.
         </p>
         <section class="main-cards-section">
             <div class="card">
@@ -37,17 +38,17 @@
             <div class="card green">
                 <h3 class="card-title green">Lista de Pacientes</h3>
                 <p class="card-description">Ver buscar y gestionar pacientes existentes</p>
-                <a class="green" href="/lista-pacientes.html">Ver Pacientes</a>
+                <a class="green" href="./pages/pacientes/listar.html">Ver Pacientes</a>
             </div>
             <div class="card purple">
                 <h3 class="card-title purple">Tipos de PET</h3>
                 <p class="card-description">Configurar y gestionar los tipos de PET disponibles</p>
-                <a class="purple" href="/tipos-pet.html">Ver Tipos de PET</a>
+                <a class="purple" href="./pages/pets/listar.html">Ver Tipos de PET</a>
             </div>
             <div class="card orange">
                 <h3 class="card-title orange">Tratamientos</h3>
                 <p class="card-description">Registrar y gestionar tratamientos de pacientes</p>
-                <a class="orange" href="/tratamientos.html">Ver Tratamientos</a>
+                <a class="orange" href="./pages/pacientes/listar.html">Ver Tratamientos</a>
             </div>
         </section>
 
@@ -62,11 +63,11 @@
                     <p>✔ Registro y seguimiento de tratamientos</p>
                 </div>
                 <div class="card">
-                    <h5>Gestión de pacientes</h5>
-                    <p>✔ Registro completo de datos personales</p>
-                    <p>✔ Búsqueda avanzada de pacientes</p>
-                    <p>✔ Modificación de registros</p>
-                    <p>✔ Registro y seguimiento de tratamientos</p>
+                    <h5>Gestión de tipos PET</h5>
+                    <p>✔ Configuración de parámetros de tratamiento</p>
+                    <p>✔ Clasificación por intensidad</p>
+                    <p>✔ Control de duración y ayuno</p>
+                    <p>✔ Activación/desactivación de tipos</p>
                 </div>
             </div>
         </section>
