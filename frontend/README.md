@@ -9,9 +9,8 @@ TODO:
 [x] hidratar formulario crear paciente
 [x] maquetar formulario editar paciente
 [x] hidratar formulario editar paciente
-[] agregar que show endpoint devuelva al paciente Y sus tratamientos
+[x] agregar que show endpoint devuelva al paciente Y sus tratamientos
 [] maquetar pagína info paciente
-[] agregar iconos en donde corresponden
 
 ## Pets
 [] maquetar listar pets page
@@ -23,3 +22,4 @@ TODO:
 
 ## Tratamiento
 [] maquetar formulario de crear Tratamiento
+[] agregar iconos en donde corresponden

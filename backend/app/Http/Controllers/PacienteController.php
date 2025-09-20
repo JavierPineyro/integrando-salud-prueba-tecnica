@@ -54,10 +54,13 @@ class PacienteController extends Controller
      */
     public function show(string $id)
     {
-        $paciente = Paciente::find($id);
+        $paciente = Paciente::with(['tratamientos.pet'])->withCount('tratamientos')->find($id);
         if (!$paciente) {
             return response()->json(['message' => 'Paciente no encontrado'], 422);
         }
+
+        $petsUniqueCount = $paciente->tratamientos->pluck('pet.id')->filter()->unique()->count();
+        $paciente->setAttribute('pets_unique_count', $petsUniqueCount);
         return response()->json($paciente);
     }
 
