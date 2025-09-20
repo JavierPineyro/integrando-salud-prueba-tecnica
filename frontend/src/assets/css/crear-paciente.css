@@ -1,0 +1,150 @@
+.listar_page__hero_section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .8rem;
+    margin-bottom: 2rem;
+}
+
+.listar_page__users_icon{
+    stroke: var(--primary-color);
+    fill: none;
+    width: 35px;
+    height: 35px;
+}
+
+.listar_page__title_divider{
+    display: flex;
+    gap: 1rem;
+    align-items:center;
+}
+
+.listar_page__title{
+    color: var(--text-color);
+}
+
+.listar_page__description{
+    color: var(--text-gray);
+}
+
+#go_back_to_listar{
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: .5rem 1rem;
+    text-align: center;
+    background-color: lightgray;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+}
+#go_back_to_listar:hover{
+    background-color: #eee;
+}
+
+#filtro > h5 {
+    color: var(--primary-color);
+    font-size: .9rem;
+    margin-bottom: 1rem;
+}
+
+#filtro .input-group input, #filtro .input-group select{
+    padding: .5rem .7rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: .9rem;
+}
+
+#filtro .container_input_create{
+    display: flex;
+    width: 100%;
+    gap: .5rem;
+    margin: .3rem 0;
+}
+
+#filtro .container_input_create #fecha_nacimiento{
+    margin-bottom: .3rem;
+}
+
+#filtro .input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#filtro .input-group label {
+    margin-bottom: .3rem;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--text-gray);
+}
+
+#filtro .input-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(51, 53, 199, 0.2);
+}
+
+#filtro .error-text {
+    color: var(--text-error);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    height: 1rem; /* Reserve space to avoid layout shifts */
+}
+
+.crear_paciente__main .listar_page__dashboard_head {
+    display: flex;
+    justify-content: center;
+}
+
+.crear_paciente__main #filtro {
+    width: 700px;
+    max-width: 100%;
+    grid-column: auto;
+}
+
+.crear_paciente__main .crear_paciente__page_header {
+    display: flex;
+    align-items: center;
+    gap: 2rem; 
+    margin-bottom: 2rem; 
+}
+
+.crear_paciente__main .listar_page__hero_section {
+    margin-bottom: 0;
+}
+
+.card_pacientes {
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: 100%;
+    background-color: var(--background-white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+}
+
+#form_filter button{
+    background-color: var(--primary-color);
+    color: var(--background-white);
+    border: none;
+    font-size: 1rem;
+    padding: .4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+#form_filter button svg{
+    width: 20px;
+    height: 20px;
+}
+
+#form_filter button:hover {
+    background-color: var(--secondary-color);
+}
