@@ -1,4 +1,4 @@
-import { $ } from '../modules/utils.js';
+import { $, $$ } from '../modules/utils.js';
 import { postData } from '../modules/api.js';
 import { pacienteSchema } from '../modules/validation.js';
 import { ZodError } from 'https://cdn.skypack.dev/zod';

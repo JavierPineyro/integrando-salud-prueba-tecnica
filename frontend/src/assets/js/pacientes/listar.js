@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadPatients();
 });
 
+function createSexoBadge(sexo) {
+    const sexoText = sexo === 'M' ? 'Hombre' : 'Mujer';
+    return `<span class="sexo-badge">${sexoText}</span>`;
+}
+
 async function loadPatients(filters = {}, page = 1) {
 
     const $tbody = $("#patients_table_body");
@@ -64,7 +69,7 @@ async function loadPatients(filters = {}, page = 1) {
                 <td>${patient.dni}</td>
                 <td>${calculateAge(patient.fecha_nacimiento)}</td>
                 <td>${formatDate(patient.fecha_nacimiento)}</td>
-                <td>${patient.sexo}</td>
+                <td>${createSexoBadge(patient.sexo)}</td>
                 <td>${formatDate(patient.created_at)}</td>
                 <td>
                     <a title="ver más" href="./lista-tratamientos.html?id=${patient.id}" class="show-button">
