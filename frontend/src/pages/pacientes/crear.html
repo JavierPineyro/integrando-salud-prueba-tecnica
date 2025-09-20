@@ -1,0 +1,85 @@
+<html lang="es" view-transition>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Crear Pacientes</title>
+    <link rel="stylesheet" href="../../assets/css/globals.css">
+    <link rel="stylesheet" href="../../assets/css/pacientes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="layout-header">
+        <div class="header-content-logo">
+            <div class="header-logo"></div>
+            <span class="header-title">Gestión Clínica</span>
+        </div>
+        <nav class="header-content-nav">
+            <a href="../../index.html" class="nav-link">Inicio</a>
+            <a href="./pages/pacientes/listar.html" class="nav-link">Lista Pacientes</a>
+            <a href="./pages/pacientes/crear.html" class="nav-link">Nuevo Paciente</a>
+            <a href="./pages/pets/crear.html" class="nav-link">Tipos de PET</a>
+        </nav>
+    </header>
+    <main class="layout-main listar_page__container crear_paciente__main">
+        <div style="margin-bottom: 1rem;">
+            <a id="go_back_to_listar" href="./listar.html"><- Volver</a>
+        </div>
+        <section class="listar_page__hero_section">
+            <div class="listar_page__title_divider">
+                <svg class="listar_page__users_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                <div>
+                    <h1 class="listar_page__title">Crear Nuevo Paciente</h1>
+                    <p class="listar_page__description">Complete la información del paciente (Todos los campos son obligatorios.)</p>
+                </div>
+            </div>
+
+        </section>
+        
+        <section class="listar_page__dashboard_head">
+            <div class="card_pacientes" id="filtro">
+                <h5 class="crear_paciente__form_title">Información del paciente</h5>
+                <form id="form_filter" action="">
+                    <div class="container_input_create">
+                        <div class="input-group">
+                            <label for="crear_nombre_input">Nombre</label>
+                            <input type="text" name="nombre" id="crear_nombre_input" placeholder="Ingrese el nombre..." />
+                        </div>
+                        <div class="input-group">
+                            <label for="crear_apellido_input">Apellido</label>
+                            <input type="text" name="apellido" id="crear_apellido_input" placeholder="Ingrese el apellido..." />
+                        </div>
+                    </div>
+                    
+                    <div class="container_input_create">
+                        <div class="input-group">
+                            <label for="crear_sexo_input">Sexo</label>
+                            <select name="sexo" id="crear_sexo_input" required>
+                                <option value="" disabled selected>Seleccionar...</option>
+                                <option value="F">Mujer</option>
+                                <option value="M">Hombre</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="crear_dni_input">DNI</label>
+                            <input type="text" name="dni" id="crear_dni_input" placeholder="Ingrese el DNI..." />
+                        </div>
+                    </div>
+                    <div class="container_input_create">
+                        <div class="input-group">
+                            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" />
+                        </div>
+                    </div>
+                    <button type="submit">Crear Paciente</button>
+                </form>
+            </div>
+
+        </section>
+    </main>
+    <footer class="layout-footer">
+        Prueba Técnica - Sistema de Gestión Clínica - 2025
+    </footer>
+    <script type="module" src="../../assets/js/modules/loadViewTransition.js"></script>
+    <!--<script type="module" src="../../assets/js/pacientes/crear.js"></script>-->
+</body>
+</html>
