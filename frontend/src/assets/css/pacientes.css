@@ -345,7 +345,7 @@
         }
 
         & .error-text {
-            color: #d92525;
+            color: var(--text-error);
             font-size: 0.75rem;
             margin-top: 0.25rem;
             height: 1rem; /* Reserve space to avoid layout shifts */
