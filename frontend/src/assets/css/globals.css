@@ -19,6 +19,15 @@
 	--green-color: #34a838;
 	--purple-color: #c41ac4;
 	--orange-color: #ec5802;
+
+	view-transition-name: page;
+}
+
+::view-transition-old(page) {
+  animation: fade-out 0.4s ease forwards;
+}
+::view-transition-new(page) {
+  animation: fade-in 0.4s ease forwards;
 }
 
 body{
@@ -89,6 +98,22 @@ header > .header-content-nav{
 	border-top: 1px solid var(--border-color);
 }
 
+.main_button {
+	text-decoration: none;
+	font-weight: 600;
+	border-radius: 8px;
+	padding: .5rem 1rem;
+	text-align: center;
+	background-color: var(--primary-color);
+	color: var(--background-white);
+	cursor: pointer;
+	transition: background-color .2s ease-in-out;
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	gap: .5rem;
+}
+
 
 @keyframes fade-out {
   from { opacity: 1; }
@@ -98,17 +123,6 @@ header > .header-content-nav{
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-:root {
-  view-transition-name: page;
-}
-
-::view-transition-old(page) {
-  animation: fade-out 0.4s ease forwards;
-}
-::view-transition-new(page) {
-  animation: fade-in 0.4s ease forwards;
 }
 
 @keyframes slide-in {

@@ -1,29 +1,41 @@
-.listar_page__hero_section{
+
+.info_page_container{
+    
+}
+
+.info_page_page_header {
+    display: flex;
+    align-items: center;
+    gap: 2rem; 
+    margin-bottom: 2rem; 
+}
+
+.info_page_hero_section{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: .8rem;
-    margin-bottom: 2rem;
+    width: 100%;
 }
 
-.listar_page__users_icon{
+.info_page_title_divider{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info_page_users_icon{
     stroke: var(--primary-color);
     fill: none;
     width: 35px;
     height: 35px;
 }
 
-.listar_page__title_divider{
-    display: flex;
-    gap: 1rem;
-    align-items:center;
-}
-
-.listar_page__title{
+.info_page_title{
     color: var(--text-color);
 }
 
-.listar_page__description{
+.info_page_description{
     color: var(--text-gray);
 }
 
@@ -36,82 +48,52 @@
     background-color: lightgray;
     color: var(--text-color);
     cursor: pointer;
+    white-space: nowrap;
     transition: background-color .2s ease-in-out;
 }
 #go_back_to_listar:hover{
     background-color: #eee;
 }
 
-#filtro > h5 {
-    color: var(--primary-color);
-    font-size: .9rem;
-    margin-bottom: 1rem;
+.main_button.info:hover{
+    background-color: var(--secondary-color);
+    color: var(--background-white);
 }
 
-#filtro .input-group input, #filtro .input-group select{
-    padding: .5rem .7rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: .9rem;
+.info_page_cards{
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem; 
+    margin-bottom: 1.5rem;
 }
 
-#filtro .container_input_create{
-    display: flex;
-    width: 100%;
-    gap: .5rem;
-    margin: .3rem 0;
+.full-width-card {
+    grid-column: 1 / -1;
 }
 
-#filtro .container_input_create #fecha_nacimiento{
-    margin-bottom: .3rem;
-}
-
-#filtro .input-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-#filtro .input-group label {
-    margin-bottom: .3rem;
-    font-size: .8rem;
+.info_paciente_data_title {
+    font-size: 1.2rem;
     font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.info_paciente_data_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info_paciente_data_item {
+    flex: 1;
+    text-align: left;
+}
+
+.info_paciente_data_item > p:first-child {
+    font-weight: 600;
+}
+
+.info_paciente_data_item > p:last-child {
     color: var(--text-gray);
-}
-
-#filtro .input-group select:focus {
-    border-color: var(--primary-color);
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(51, 53, 199, 0.2);
-}
-
-#filtro .error-text {
-    color: var(--text-error);
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
-    height: 1rem; /* Reserve space to avoid layout shifts */
-}
-
-.crear_paciente__main .listar_page__dashboard_head {
-    display: flex;
-    justify-content: center;
-}
-
-.crear_paciente__main #filtro {
-    width: 700px;
-    max-width: 100%;
-    grid-column: auto;
-}
-
-.crear_paciente__main .crear_paciente__page_header {
-    display: flex;
-    align-items: center;
-    gap: 2rem; 
-    margin-bottom: 2rem; 
-}
-
-.crear_paciente__main .listar_page__hero_section {
-    margin-bottom: 0;
 }
 
 .card_pacientes {
@@ -123,28 +105,42 @@
     color: var(--text-color);
 }
 
-#form_filter button{
-    background-color: var(--primary-color);
-    color: var(--background-white);
-    border: none;
+.card_pacientes > .total_pacientes_card_title{
     font-size: 1rem;
-    padding: .4rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    font-weight: 600;
+}
+
+.card_pacientes svg{
+    width: 30px;
+    height: 30px;
+    stroke: var(--primary-color);
+    fill: none;
+    text-align: center;
+}
+
+.card_pacientes .total_pacientes_card_number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    margin-top: 1rem;
+    height: auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.card_pacientes .total_pacientes_card_title{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: .5rem;
+    width: 100%;
+    text-align: center;
+    color: var(--text-color);
 }
 
-#form_filter button svg{
-    width: 20px;
-    height: 20px;
-}
-
-#form_filter button:hover {
-    background-color: var(--secondary-color);
+#total_pacientes, #total_resultados{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
