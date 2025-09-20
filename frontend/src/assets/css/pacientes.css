@@ -343,6 +343,35 @@
             outline: none;
             box-shadow: 0 0 0 2px rgba(51, 53, 199, 0.2);
         }
+
+        & .error-text {
+            color: #d92525;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            height: 1rem; /* Reserve space to avoid layout shifts */
+        }
+    }
+
+    &.crear_paciente__main .listar_page__dashboard_head {
+        display: flex;
+        justify-content: center;
+    }
+
+    &.crear_paciente__main #filtro {
+        width: 700px;
+        max-width: 100%;
+        grid-column: auto;
+    }
+
+    &.crear_paciente__main .crear_paciente__page_header {
+        display: flex;
+        align-items: center;
+        gap: 2rem; 
+        margin-bottom: 2rem; 
+    }
+
+    &.crear_paciente__main .listar_page__hero_section {
+        margin-bottom: 0;
     }
        
 }

@@ -15,25 +15,21 @@
         </div>
         <nav class="header-content-nav">
             <a href="../../index.html" class="nav-link">Inicio</a>
-            <a href="./pages/pacientes/listar.html" class="nav-link">Lista Pacientes</a>
-            <a href="./pages/pacientes/crear.html" class="nav-link">Nuevo Paciente</a>
-            <a href="./pages/pets/crear.html" class="nav-link">Tipos de PET</a>
+            <a href="./listar.html" class="nav-link">Lista Pacientes</a>
+            <a href="./crear.html" class="nav-link">Nuevo Paciente</a>
+            <a href="../pets/listar.html" class="nav-link">Tipos de PET</a>
         </nav>
     </header>
     <main class="layout-main listar_page__container crear_paciente__main">
-        <div style="margin-bottom: 1rem;">
-            <a id="go_back_to_listar" href="./listar.html"><- Volver</a>
-        </div>
-        <section class="listar_page__hero_section">
-            <div class="listar_page__title_divider">
+            <div class="crear_paciente__page_header">
+                <a id="go_back_to_listar" href="./listar.html"><- Volver</a>
+                <section class="listar_page__hero_section">            <div class="listar_page__title_divider">
                 <svg class="listar_page__users_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
                 <div>
                     <h1 class="listar_page__title">Crear Nuevo Paciente</h1>
                     <p class="listar_page__description">Complete la información del paciente (Todos los campos son obligatorios.)</p>
-                </div>
-            </div>
-
         </section>
+    </div>
         
         <section class="listar_page__dashboard_head">
             <div class="card_pacientes" id="filtro">
@@ -42,11 +38,13 @@
                     <div class="container_input_create">
                         <div class="input-group">
                             <label for="crear_nombre_input">Nombre</label>
-                            <input type="text" name="nombre" id="crear_nombre_input" placeholder="Ingrese el nombre..." />
+                            <input type="text" name="nombre" id="crear_nombre_input" placeholder="Ingrese el nombre..." required />
+                            <p class="error-text" id="error-nombre"></p>
                         </div>
                         <div class="input-group">
                             <label for="crear_apellido_input">Apellido</label>
-                            <input type="text" name="apellido" id="crear_apellido_input" placeholder="Ingrese el apellido..." />
+                            <input type="text" name="apellido" id="crear_apellido_input" placeholder="Ingrese el apellido..." required />
+                            <p class="error-text" id="error-apellido"></p>
                         </div>
                     </div>
                     
@@ -58,16 +56,19 @@
                                 <option value="F">Mujer</option>
                                 <option value="M">Hombre</option>
                             </select>
+                            <p class="error-text" id="error-sexo"></p>
                         </div>
                         <div class="input-group">
                             <label for="crear_dni_input">DNI</label>
-                            <input type="text" name="dni" id="crear_dni_input" placeholder="Ingrese el DNI..." />
+                            <input type="number" name="dni" id="crear_dni_input" placeholder="Ingrese el DNI..." required min="1" />
+                            <p class="error-text" id="error-dni"></p>
                         </div>
                     </div>
                     <div class="container_input_create">
                         <div class="input-group">
                             <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" />
+                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required />
+                            <p class="error-text" id="error-fecha_nacimiento"></p>
                         </div>
                     </div>
                     <button type="submit">Crear Paciente</button>
@@ -80,6 +81,6 @@
         Prueba Técnica - Sistema de Gestión Clínica - 2025
     </footer>
     <script type="module" src="../../assets/js/modules/loadViewTransition.js"></script>
-    <!--<script type="module" src="../../assets/js/pacientes/crear.js"></script>-->
+    <script type="module" src="../../assets/js/pacientes/crear.js"></script>
 </body>
 </html>
