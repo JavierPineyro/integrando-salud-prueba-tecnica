@@ -1,0 +1,103 @@
+<html lang="es" view-transition>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Ver Paciente</title>
+    <link rel="stylesheet" href="../../assets/css/globals.css">
+    <link rel="stylesheet" href="../../assets/css/info-paciente.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="layout-header">
+        <div class="header-content-logo">
+            <div class="header-logo"></div>
+            <span class="header-title">Gestión Clínica</span>
+        </div>
+        <nav class="header-content-nav">
+            <a href="../../index.html" class="nav-link">Inicio</a>
+            <a href="./listar.html" class="nav-link">Lista Pacientes</a>
+            <a href="./crear.html" class="nav-link">Nuevo Paciente</a>
+            <a href="../pets/crear.html" class="nav-link">Tipos de PET</a>
+        </nav>
+    </header>
+    <main class="layout-main listar_page__container">
+        <section class="listar_page__hero_section">
+            <div class="listar_page__title_divider">
+                <svg class="listar_page__users_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                <div>
+                    <h1 class="listar_page__title">Lista de Pacientes</h1>
+                    <p class="listar_page__description">Gestiona y consulta la información de todos los pacientes registrados</p>
+                </div>
+            </div>
+            <a class="listar_page__main_button" href="./crear.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+                Nuevo paciente
+            </a>
+        </section>
+        
+        <section class="listar_page__dashboard_head">
+            <div class="card_pacientes" id="total_pacientes">
+                <div class="total_pacientes_card_title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                    Total Pacientes
+                </div>
+                <div class="total_pacientes_card_number" id="total">
+                    0
+                </div>
+            </div>
+            <div class="card_pacientes" id="total_pacientes">
+                <div class="total_pacientes_card_title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                    Total Pacientes
+                </div>
+                <div class="total_pacientes_card_number" id="total">
+                    0
+                </div>
+            </div>
+            <div class="card_pacientes" id="total_resultados">
+                <div class="total_pacientes_card_title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                    Total Resultados
+                </div>
+                <div class="total_pacientes_card_number" id="resultados">
+                    0
+                </div>
+            </div>
+        </section>
+
+        <section class="listar_page__table_section">
+            <h3 class="paciente_table_title">Pacientes Registrados</h3>
+            <p class="paciente_table_description">Total de <span class="x-pacientes">x</span> pacientes(s) registrado(s)</p>
+        
+            <table id="pacientes_table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Edad</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Sexo</th>
+                        <th>Fecha de Registro</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="patients_table_body">
+                    <!-- Aca se llenarán los datos de los pacientes dinámicamente -->
+                    
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button>Anterior</button>
+                Pág. 1 de 4
+                <button>Siguiente</button>
+            </div>
+        </section>
+    </main>
+    <footer class="layout-footer">
+        Prueba Técnica - Sistema de Gestión Clínica - 2025
+    </footer>
+    <script type="module" src="../../assets/js/modules/loadViewTransition.js"></script>
+    <!--<script type="module" src="../../assets/js/pacientes/info.js"></script>-->
+</body>
+</html>
