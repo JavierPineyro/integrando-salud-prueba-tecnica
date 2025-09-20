@@ -1,4 +1,4 @@
-import {$, $$} from "../modules/utils.js"
+import {$, $$, createSexoBadge} from "../modules/utils.js"
 import { fetchData } from '../modules/api.js';
 import { baseUrl, formatDate, calculateAge } from '../modules/utils.js';
 //const currentPath = window.location.pathname;
@@ -17,11 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     loadPatients();
 });
-
-function createSexoBadge(sexo) {
-    const sexoText = sexo === 'M' ? 'Hombre' : 'Mujer';
-    return `<span class="sexo-badge">${sexoText}</span>`;
-}
 
 async function loadPatients(filters = {}, page = 1) {
 
@@ -110,49 +105,3 @@ async function loadPatients(filters = {}, page = 1) {
         alert('Hubo un error al cargar los pacientes. Por favor, inténtelo de nuevo más tarde.');
     }
 }  
-
-  let ejemploResultadoBackend = {
-    "current_page": 1,
-    "data": [
-      {
-        "id": 1,
-        "nombre": "Luis Alfonso",
-        "apellido": "Gómez",
-        "dni": 32904231,
-        "fecha_nacimiento": "1980-05-15T00:00:00.000000Z",
-        "sexo": "M",
-        "created_at": "2025-09-18T17:29:07.000000Z",
-        "updated_at": "2025-09-18T17:29:07.000000Z"
-      }
-    ],
-    "first_page_url": "http://localhost:8000/api/pacientes?page=1",
-    "from": 1,
-    "last_page": 1,
-    "last_page_url": "http://localhost:8000/api/pacientes?page=1",
-    "links": [
-      {
-        "url": null,
-        "label": "&laquo; Previous",
-        "page": null,
-        "active": false
-      },
-      {
-        "url": "http://localhost:8000/api/pacientes?page=1",
-        "label": "1",
-        "page": 1,
-        "active": true
-      },
-      {
-        "url": null,
-        "label": "Next &raquo;",
-        "page": null,
-        "active": false
-      }
-    ],
-    "next_page_url": null,
-    "path": "http://localhost:8000/api/pacientes",
-    "per_page": 10,
-    "prev_page_url": null,
-    "to": 1,
-    "total": 1
-  }

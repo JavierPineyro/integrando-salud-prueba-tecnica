@@ -5,6 +5,7 @@
     <title>Panel de Administración - Ver Paciente</title>
     <link rel="stylesheet" href="../../assets/css/globals.css">
     <link rel="stylesheet" href="../../assets/css/info-paciente.css">
+    <link rel="stylesheet" href="../../assets/css/pacientes.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -31,7 +32,7 @@
                         <p class="info_page_description">Visualiza la información detallada de tus pacientes.</p>
                     </div>
                 </div>
-                <a class="main_button info" href="../tratamientos/crear.html">
+                <a id="new_treatment_link" class="main_button info" href="../tratamientos/crear.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
                     Añadir Tratamiento
                 </a>
@@ -44,19 +45,19 @@
                 <div class="info_paciente_data_container">
                     <div class="info_paciente_data_item">
                         <p>Nombre Completo</p>
-                        <p id="nombre"> Ana Lucide</p>
+                        <p id="nombre"></p>
                     </div>
                     <div class="info_paciente_data_item">
                         <p>DNI</p>
-                        <p id="dni">43998032</p>
+                        <p id="dni"></p>
                     </div>
                     <div class="info_paciente_data_item">
                         <p>Sexo</p>
-                        <p id="sexo">Mujer</p>
+                        <p id="sexo"></p>
                     </div>
                     <div class="info_paciente_data_item">
                         <p>Fecha Nac.</p>
-                        <p id="fecha_nacimiento">30/05/2001</p>
+                        <p id="fecha_nacimiento"></p>
                     </div>
                 </div>
             </div>
@@ -104,22 +105,17 @@
                         <th>Ayuno</th>
                     </tr>
                 </thead>
-                <tbody id="patients_table_body">
+                <tbody id="pacientes_table_body">
                     <!-- Aca se llenarán los datos de los pacientes dinámicamente -->
                     
                 </tbody>
             </table>
-            <div class="pagination">
-                <button>Anterior</button>
-                Pág. 1 de 4
-                <button>Siguiente</button>
-            </div>
         </section>
     </main>
     <footer class="layout-footer">
         Prueba Técnica - Sistema de Gestión Clínica - 2025
     </footer>
     <script type="module" src="../../assets/js/modules/loadViewTransition.js"></script>
-    <!--<script type="module" src="../../assets/js/pacientes/info.js"></script>-->
+    <script type="module" src="../../assets/js/pacientes/info.js"></script>
 </body>
 </html>

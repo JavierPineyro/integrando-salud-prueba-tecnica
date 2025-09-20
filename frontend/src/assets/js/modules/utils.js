@@ -17,8 +17,6 @@ export function formatDate(dateString, locale = 'es-AR') {
   return date.toLocaleDateString(locale, options);
 }
 
-// utils.js
-
 export function calculateAge(dateString) {
   if (!dateString) return null;
 
@@ -34,5 +32,10 @@ export function calculateAge(dateString) {
   }
 
   return age;
+}
+
+export function createSexoBadge(sexo) {
+    const sexoText = sexo === 'M' ? 'Hombre' : 'Mujer';
+    return `<span class="sexo-badge">${sexoText}</span>`;
 }
 

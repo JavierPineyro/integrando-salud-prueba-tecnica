@@ -1,59 +1,104 @@
+import {$, formatDate} from "../modules/utils.js";
+import { fetchData } from '../modules/api.js';
 
+document.addEventListener('DOMContentLoaded', async () => {
+  
+    const queryParams = new URLSearchParams(window.location.search);
+    const patientId = queryParams.get('id');
 
-
-
-
-const mockResponse = {
-  "id": 1,
-  "nombre": "Luis Alfonso",
-  "apellido": "Gómez",
-  "dni": 32904231,
-  "fecha_nacimiento": "1980-05-15T00:00:00.000000Z",
-  "sexo": "M",
-  "created_at": "2025-09-18T17:29:07.000000Z",
-  "updated_at": "2025-09-18T17:29:07.000000Z",
-  "tratamientos_count": 2,
-  "pets_unique_count": 2,
-  "tratamientos": [
-    {
-      "id": 1,
-      "paciente_id": 1,
-      "pet_id": 1,
-      "fecha_inicio": "2025-09-18T00:00:00.000000Z",
-      "created_at": "2025-09-18T17:29:07.000000Z",
-      "updated_at": "2025-09-18T17:29:07.000000Z",
-      "pet": {
-        "id": 1,
-        "nombre": "PET-CT Tomografía",
-        "color": "verde",
-        "intensidad": 2,
-        "duracion_minutos": 35,
-        "ayuno": true,
-        "observaciones": "Ninguna",
-        "activo": true,
-        "created_at": "2025-09-18T17:29:06.000000Z",
-        "updated_at": "2025-09-19T20:06:40.000000Z"
-      }
-    },
-    {
-      "id": 2,
-      "paciente_id": 1,
-      "pet_id": 2,
-      "fecha_inicio": "2025-09-19T00:00:00.000000Z",
-      "created_at": "2025-09-19T20:12:05.000000Z",
-      "updated_at": "2025-09-19T20:12:05.000000Z",
-      "pet": {
-        "id": 2,
-        "nombre": "PET-AF Radiografía Computarizada",
-        "color": "verde",
-        "intensidad": 1,
-        "duracion_minutos": 5,
-        "ayuno": false,
-        "observaciones": "Ninguna",
-        "activo": true,
-        "created_at": "2025-09-19T20:07:10.000000Z",
-        "updated_at": "2025-09-19T20:07:10.000000Z"
-      }
+    if (!patientId ||  isNaN(Number(patientId))) {
+        alert('ID de paciente no proporcionado en la URL.');
+        window.location.href = './listar.html';
+        return;
     }
-  ]
+
+    loadPatientsInfo(patientId);
+}
+);
+
+async function loadPatientsInfo(patientId) {
+
+    const $tbody = $("#pacientes_table_body");
+    const $newTreatmentLink = $("#new_treatment_link");
+    const $total_treatments = $("#total_treatments");
+    const $lastTreatment = $("#last_treatment");
+    const $petAmount = $("#pet_amount");
+    const $name = $("#nombre");
+    const $dni = $("#dni");
+    const $sex = $("#sexo");
+    const $birthday = $("#fecha_nacimiento");
+    
+    const id = Number(patientId);
+    $tbody.innerHTML = "";
+
+    try {
+        const patient = await fetchData(`/api/pacientes/${id}`);
+
+        $name.textContent = patient.nombre.concat(` ${patient.apellido}`);
+        $dni.textContent = patient.dni;
+        $sex.innerHTML = patient.sexo === "M" ? "Mujer" : "Hombre";
+        $birthday.textContent = formatDate(patient.fecha_nacimiento);
+
+        $total_treatments.textContent = patient.tratamientos_count ?? 0;
+        $petAmount.textContent = patient.pets_unique_count ?? 0;
+        $lastTreatment.textContent = getLastTreatmentDate(patient.tratamientos);
+
+        $newTreatmentLink.href = `${$newTreatmentLink.href}?id=${id}`
+        
+        renderTableRows(patient.tratamientos)
+                
+    } catch (error) {
+        console.error('Error fetching patients:', error);
+        $tbody.innerHTML = '<tr><td colspan="8" class="text-center">Hubo un error al cargar los pacientes.</td></tr>';
+        alert('Hubo un error al cargar los pacientes. Por favor, inténtelo de nuevo más tarde.');
+    }
+}  
+
+function renderTableRows(treatments) {
+  let $tbody = $("#pacientes_table_body");
+  $tbody.innerHTML = "";
+
+  if (treatments.length === 0) {
+    $tbody.innerHTML = '<tr><td colspan="8" class="text-center">No hay tratamientos registrados para este paciente.</td></tr>';
+    return;
+  }
+
+  treatments.forEach(t => {
+    const row = document.createElement('tr');
+    const color = getColor(t.pet.color);
+    row.innerHTML = `
+        <td>${t.pet.nombre}</td>
+        <td style="color: ${color};">${t.pet.color}</td>
+        <td>${t.pet.intensidad}/10</td>
+        <td>${t.pet.duracion_minutos}</td>
+        <td>${formatDate(t.fecha_inicio)}</td>
+        <td><span class="sexo-badge">${t.ayuno ? "Requerido" : "No Requerido"}</span></td>
+    `;
+    $tbody.appendChild(row);
+  });
+}
+
+function getColor(color) {
+    switch (color.toLowerCase()) {
+        case 'rojo':
+            return 'red';
+        case 'verde':
+            return 'green';
+        case 'amarillo':
+            return 'yellow';
+        case 'ámbar':
+            return 'amber';
+        default:
+            return 'black';
+    }
+}
+
+function getLastTreatmentDate(treatments) {
+  if (!treatments || treatments.length === 0) return 'N/A';
+
+  const lastTreatment = treatments.reduce((latest, current) => {
+    return new Date(current.fecha_inicio) > new Date(latest.fecha_inicio) ? current : latest;
+  });
+
+  return formatDate(lastTreatment.fecha_inicio);
 }
