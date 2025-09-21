@@ -19,7 +19,7 @@ class TratamientoController extends Controller
             $query->where('paciente_id', $paciente_id);
         }
 
-        $tratamientos = $query->paginate(10);
+        $tratamientos = $query->orderBy('created_at', 'desc')->paginate(10);
         return response()->json($tratamientos);
 
     }

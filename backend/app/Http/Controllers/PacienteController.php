@@ -24,7 +24,7 @@ class PacienteController extends Controller
             $pacientes->where('dni', $dni);
         }
 
-        $lista_pacientes = $pacientes->paginate(10);
+        $lista_pacientes = $pacientes->orderBy('created_at', 'desc')->paginate(10);
         return response()->json($lista_pacientes);
 
     }

@@ -16,7 +16,9 @@ class PetController extends Controller
         $pets = Pet::query();
 
         if (!$con_inactivos) {
-            $pets->where('activo', true);
+            $pets->where('activo', true)->orderBy('updated_at', 'desc');
+        }else{
+            $pets->where('activo', false)->orderBy('updated_at', 'desc');
         }
 
         $lista_pets = $pets->paginate(10);
@@ -25,7 +27,10 @@ class PetController extends Controller
 
     public function listAllActive()
     {
-        $pets = Pet::where('activo', true)->select('id', 'nombre')->get();
+        $pets = Pet::where('activo', true)
+                        ->orderBy('created_at', 'desc')
+                        ->select('id', 'nombre')
+                        ->get();
         return response()->json($pets);
     }
 
