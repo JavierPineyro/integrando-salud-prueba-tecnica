@@ -50,7 +50,7 @@ async function loadPets(filters = {}, page = 1) {
     
         $totalPets.textContent = pets.total_pet_items;
         $activesPets.textContent = pets.total_actives;
-        $activesPets.textContent = pets.total_inactives;
+        $inactivesPets.textContent = pets.total_inactives;
 
         renderTableRows(pets.data)
        
@@ -95,7 +95,7 @@ function renderTableRows(pets){
         const row = document.createElement('tr');
         const color = getColor(pet.color);
         row.innerHTML = `
-            <td title="${pet.nombre}">${pet.nombre}</td>
+            <td id="t_nam" title="${pet.nombre}">${pet.nombre}</td>
             <td title="${pet.color}" style="color: ${color};">
                 <span style=" height:20px; width:20px; border-radius:9999px; background-color:${color}; display:flex; justify-content:center; align-items:center;"></span>
             </td>
@@ -103,7 +103,7 @@ function renderTableRows(pets){
             <td style="font-weight: 600;">${pet.duracion_minutos}</td>
             <td>${pet.ayuno ? "Sí" : "No"}</td>
             <td id="t_obs" title="${pet.observaciones}">${pet.observaciones}</td>
-            <td>
+            <td title="${pet.activo ? "Activo" : "Inactivo"}">
                 <label class="switch">
                   <input 
                     type="checkbox"

@@ -146,7 +146,7 @@
 }
 
 .listar_page__table_section{
-        margin-top: 2.5rem;
+        /*margin-top: 2rem;*/
         padding: 1.5rem;
         border-radius: 8px;
         background-color: var(--background-white);
@@ -211,7 +211,7 @@
             }
             
 
-            & tbody tr #t_obs {
+            & tbody tr #t_obs, tbody tr #t_nam {
               max-width: 300px;       /* límite de ancho */
               white-space: wrap; !important    /* evita saltos de línea */
             }

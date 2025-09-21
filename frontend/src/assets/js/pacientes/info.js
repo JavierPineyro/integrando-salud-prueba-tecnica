@@ -36,7 +36,7 @@ async function loadPatientsInfo(patientId) {
 
         $name.textContent = patient.nombre.concat(` ${patient.apellido}`);
         $dni.textContent = patient.dni;
-        $sex.innerHTML = patient.sexo === "M" ? "Mujer" : "Hombre";
+        $sex.textContent = patient.sexo === "F" ? "Mujer" : "Hombre";
         $birthday.textContent = formatDate(patient.fecha_nacimiento);
 
         $total_treatments.textContent = patient.tratamientos_count ?? 0;
