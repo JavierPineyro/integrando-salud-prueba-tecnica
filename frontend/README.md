@@ -15,6 +15,8 @@ TODO:
 ## Pets
 [x] maquetar listar pets page
 [x] hidratar página pets page
+[] hacer funcionar el boton de activo en tabla pets
+[] agregar el contador de pets activos/inactivos de listar pets tabla
 [] maquetar formulario de crear pet
 [] hidratar formulario de crear pet
 [] maquetar formulario de editar pet
