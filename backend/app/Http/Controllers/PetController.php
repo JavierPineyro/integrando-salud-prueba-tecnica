@@ -16,13 +16,24 @@ class PetController extends Controller
         $pets = Pet::query();
 
         if (!$con_inactivos) {
-            $pets->where('activo', true)->orderBy('updated_at', 'desc');
+            $pets->where('activo', true);
         }else{
-            $pets->where('activo', false)->orderBy('updated_at', 'desc');
+            $pets->where('activo', false);
         }
+        
 
-        $lista_pets = $pets->paginate(10);
-        return response()->json($lista_pets);
+        $lista_pets = $pets->orderBy('updated_at', 'desc')->paginate(10);
+
+        $total_actives = Pet::where("activo", true)->count();
+        $total_inactives = Pet::where("activo", false)->count();
+        $total_pet_items = Pet::count();
+
+        $result = $lista_pets->toArray();
+        $result["total_actives"] = $total_actives;
+        $result["total_inactives"] = $total_inactives;
+        $result["total_pet_items"] = $total_pet_items;
+
+        return response()->json($result);
     }
 
     public function listAllActive()
