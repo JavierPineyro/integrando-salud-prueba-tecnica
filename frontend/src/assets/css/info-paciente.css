@@ -199,8 +199,8 @@
                 font-size: 0.75rem;
                 font-weight: 600;
                 display: inline-block;
-                min-width: 70px; /* Add a minimum width */
-                text-align: center; /* Center the text inside the badge */
+                min-width: 70px;
+                text-align: center;
             }
             
             & tbody tr td {
@@ -209,6 +209,13 @@
               overflow: hidden;       /* oculta el contenido que sobra */
               text-overflow: ellipsis;
             }
+            
+
+            & tbody tr #t_obs {
+              max-width: 300px;       /* límite de ancho */
+              white-space: wrap; !important    /* evita saltos de línea */
+            }
+
 
             & tbody .action_button{
                 display: flex;

@@ -96,11 +96,12 @@ function renderTableRows(pets){
         const row = document.createElement('tr');
         const color = getColor(pet.color);
         row.innerHTML = `
-            <td>${pet.nombre}</td>
+            <td title="${pet.nombre}">${pet.nombre}</td>
             <td style="color: ${color};">${pet.color}</td>
             <td>${pet.intensidad}/10</td>
             <td>${pet.duracion_minutos}</td>
             <td>${pet.ayuno ? "Sí" : "No"}</td>
+            <td id="t_obs" title="${pet.observaciones}">${pet.observaciones}</td>
             <td>
                 <label class="switch">
                   <input 

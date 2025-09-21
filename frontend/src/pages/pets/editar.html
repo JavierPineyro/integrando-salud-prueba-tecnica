@@ -1,0 +1,95 @@
+<html lang="es" view-transition>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Crear Pacientes</title>
+    <link rel="stylesheet" href="../../assets/css/globals.css">
+    <link rel="stylesheet" href="../../assets/css/crear-paciente.css">
+    <link rel="stylesheet" href="../../assets/css/crear-pet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="layout-header">
+        <div class="header-content-logo">
+            <div class="header-logo"></div>
+            <span class="header-title">Gestión Clínica</span>
+        </div>
+        <nav class="header-content-nav">
+            <a href="../../index.html" class="nav-link">Inicio</a>
+            <a href="../pacientes/listar.html" class="nav-link">Lista Pacientes</a>
+            <a href="../pacientes/crear.html" class="nav-link">Nuevo Paciente</a>
+            <a href="./listar.html" class="nav-link">Tipos de PET</a>
+        </nav>
+    </header>
+    <main class="layout-main listar_page__container crear_paciente__main">
+            <div class="crear_paciente__page_header">
+                <a id="go_back_to_listar" href="./listar.html"><- Volver</a>
+                <section class="listar_page__hero_section">            <div class="listar_page__title_divider">
+                <svg class="listar_page__users_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                <div>
+                    <h1 class="listar_page__title">Editar PET</h1>
+                    <p class="listar_page__description">Actualice la información del tipo de PET.</p>
+        </section>
+    </div>
+        
+        <section class="listar_page__dashboard_head">
+            <div class="card_pacientes" id="filtro">
+                <h5 class="crear_paciente__form_title">Información del PET</h5>
+                <form id="form_filter" action="">
+                    <div class="container_input_create">
+                        <div class="input-group">
+                            <label for="editar_nombre_input">Nombre Descriptivo*</label>
+                            <input type="text" name="nombre" id="editar_nombre_input" placeholder="Ingrese el nombre..." required />
+                            <p class="error-text" id="error-nombre"></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="editar_color_input">Color de Identificación*</label>
+                            <select name="color" id="editar_color_input" required>
+                                <option value="" disabled selected>Seleccionar...</option>
+                                <option value="verde">Verde</option>
+                                <option value="amarillo">Amarillo</option>
+                                <option value="ambar">Ambar</option>
+                                <option value="rojo">Rojo</option>
+                            </select>
+                            <p class="error-text" id="error-color"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="container_input_create">
+                        <div class="input-group">
+                            <label for="editar_duracion_input">Duración en Minutos*</label>
+                            <input type="number" name="duracion_minutos" id="editar_duracion_input" placeholder="Ingrese la duración..." required min="1"/>
+                            <p class="error-text" id="error-duracion_minutos"></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="editar_intensidad_input">Intensidad (1 al 10)*</label>
+                            <input type="number" name="intensidad" id="editar_intensidad_input" placeholder="Ingrese la intensidad..." required min="1" max="10"  />
+                            <p class="error-text" id="error-intensidad"></p>
+                        </div>
+                    </div>
+                    <div class="container_input_create">
+                        <div class="input-group" id="ayuno-group">
+                            <label for="editar_ayuno_input">¿Requiere Ayuno?</label>
+                            <input type="checkbox" name="ayuno" id="editar_ayuno_input" />
+                        </div>
+                        <div class="input-group"></div>
+                    </div>
+                    <div class="container_input_create">
+                        <div class="input-group">
+                            <label for="observaciones">Observaciones</label>
+                            <textarea name="observaciones" id="observaciones"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save-icon lucide-save"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"/><path d="M7 3v4a1 1 0 0 0 1 1h7"/></svg>Actualizar</button>
+                </form>
+            </div>
+
+        </section>
+    </main>
+    <footer class="layout-footer">
+        Prueba Técnica - Sistema de Gestión Clínica - 2025
+    </footer>
+    <script type="module" src="../../assets/js/modules/loadViewTransition.js"></script>
+    <script type="module" src="../../assets/js/pets/editar.js"></script>
+</body>
+</html>
