@@ -48,9 +48,9 @@ async function loadPets(filters = {}, page = 1) {
             return;
         }
     
-        $totalPets.textContent = pets.total
-        $activesPets.textContent = 0;
-        $inactivesPets.textContent = 0;
+        $totalPets.textContent = pets.total_pet_items;
+        $activesPets.textContent = pets.total_actives;
+        $activesPets.textContent = pets.total_inactives;
 
         renderTableRows(pets.data)
        
