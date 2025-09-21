@@ -13,8 +13,8 @@ TODO:
 [x] maquetar pagína info paciente
 
 ## Pets
-[] maquetar listar pets page
-[] hidratar página pets page
+[x] maquetar listar pets page
+[x] hidratar página pets page
 [] maquetar formulario de crear pet
 [] hidratar formulario de crear pet
 [] maquetar formulario de editar pet
