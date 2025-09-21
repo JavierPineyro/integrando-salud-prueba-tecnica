@@ -89,7 +89,7 @@
     color: var(--text-error);
     font-size: 0.75rem;
     margin-top: 0.25rem;
-    height: 1rem; /* Reserve space to avoid layout shifts */
+    height: 1rem;
 }
 
 .crear_paciente__main .listar_page__dashboard_head {

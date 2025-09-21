@@ -1,0 +1,24 @@
+#ayuno-group {
+    flex-direction: row !important;
+    align-items: center !important; 
+    gap: 10px !important;            
+    margin-bottom: 1rem !important;    
+}
+
+#ayuno-group label {
+    margin-bottom: 0 !important; 
+}
+
+#ayuno-group input[type="checkbox"] {
+    width: auto !important;          
+    margin-top: 0 !important;         
+}
+
+#filtro .input-group textarea {
+    padding: .5rem .7rem;
+    font-size: .9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: inherit;
+    resize: vertical;
+}

@@ -1,5 +1,3 @@
-
-
 .listar_page__table_section .paciente_table_title{
     font-size: 1.1rem;;
 }
@@ -22,11 +20,12 @@
 .switch {
  --secondary-container: rgb(132, 139, 240);
  --primary: var(--primary-color);
- font-size: 15px;
+ font-size: 13px;
  position: relative;
  display: inline-block;
  width: 3.7em;
  height: 1.8em;
+ vertical-align: middle;
 }
 
 .switch input {

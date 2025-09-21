@@ -1,6 +1,6 @@
 import { $, $$ } from '../modules/utils.js';
 import { postData } from '../modules/api.js';
-import { pacienteSchema } from '../modules/validation.js';
+import { petSchema } from '../modules/validation.js';
 import { ZodError } from 'https://cdn.skypack.dev/zod';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,26 +13,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(e.target);
         const data = {
             nombre: formData.get('nombre'),
-            apellido: formData.get('apellido'),
-            sexo: formData.get('sexo'),
-            dni: formData.get('dni'),
-            fecha_nacimiento: formData.get('fecha_nacimiento')
+            color: formData.get('color'),
+            duracion_minutos: formData.get('duracion_minutos'),
+            intensidad: formData.get('intensidad'),
+            ayuno: formData.get('ayuno'),
+            observaciones: formData.get('observaciones')
         };
 
         try {
-            pacienteSchema.parse(data);
+            petSchema.parse(data);
             
-            const result = await postData('/api/pacientes', data);
-            console.log('Paciente creado:', result);
-            alert('Paciente creado con éxito!');
+            const result = await postData('/api/pets', data);
+            alert('PET creado con éxito!');
             window.location.href = './listar.html';
 
         } catch (error) {
             if (error instanceof ZodError) {
                 displayErrors(error.errors);
             } else {
-                console.error('Error al crear el paciente:', error.message);
-                alert(`Error al crear el paciente: ${error.message}`);
+                console.error('Error al crear el PET:', error.message);
+                alert(`Error al crear el PET: ${error.message}`);
             }
         }
     });

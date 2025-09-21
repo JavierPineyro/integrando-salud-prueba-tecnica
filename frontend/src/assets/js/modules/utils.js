@@ -46,9 +46,9 @@ export function getColor(color) {
         case 'verde':
             return 'green';
         case 'amarillo':
-            return 'yellow';
-        case 'ámbar':
-            return 'amber';
+            return '#FFD700';
+        case 'ambar':
+            return 'orange';
         default:
             return 'black';
     }
