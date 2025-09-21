@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
             color: formData.get('color'),
             duracion_minutos: formData.get('duracion_minutos'),
             intensidad: formData.get('intensidad'),
-            ayuno: formData.get('ayuno'),
+            ayuno: formData.get('ayuno') === 'on',
             observaciones: formData.get('observaciones')
         };
-
+        
         try {
             petSchema.parse(data);
             
