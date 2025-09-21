@@ -49,12 +49,11 @@ async function loadPets(filters = {}, page = 1) {
         }
     
         $totalPets.textContent = pets.total
-        $activesPets.textContent = 2323;
-        $inactivesPets.textContent = 2323;
+        $activesPets.textContent = 0;
+        $inactivesPets.textContent = 0;
 
         renderTableRows(pets.data)
        
-
         const prevButton = document.createElement('button');
         prevButton.textContent = 'Anterior';
         prevButton.disabled = !pets.prev_page_url;
@@ -76,7 +75,7 @@ async function loadPets(filters = {}, page = 1) {
         $paginationContainer.appendChild(nextButton);
                
     } catch (error) {
-        console.error('Error fetching patients:', error);
+        console.error('Error fetching pets:', error);
         $tbody.innerHTML = '<tr><td colspan="8" class="text-center">Hubo un error al cargar los PETs.</td></tr>';
         $paginationContainer.innerHTML = '';
         alert('Hubo un error al cargar los PETs. Por favor, inténtelo de nuevo más tarde.');
@@ -97,9 +96,11 @@ function renderTableRows(pets){
         const color = getColor(pet.color);
         row.innerHTML = `
             <td title="${pet.nombre}">${pet.nombre}</td>
-            <td style="color: ${color};">${pet.color}</td>
+            <td title="${pet.color}" style="color: ${color};">
+                <span style=" height:20px; width:20px; border-radius:9999px; background-color:${color}; display:flex; justify-content:center; align-items:center;"></span>
+            </td>
             <td>${pet.intensidad}/10</td>
-            <td>${pet.duracion_minutos}</td>
+            <td style="font-weight: 600;">${pet.duracion_minutos}</td>
             <td>${pet.ayuno ? "Sí" : "No"}</td>
             <td id="t_obs" title="${pet.observaciones}">${pet.observaciones}</td>
             <td>
@@ -141,9 +142,6 @@ function setupTableEventListeners() {
                 };
                 
                 const res = await updateData(`/api/pets/${petId}`, dataToUpdate);
-
-                console.log(`PET con ID ${petId} actualizado a estado: ${newStatus}`);
-                
                 loadPets({ "con_inactivos": $filter.checked });
 
             } catch (error) {

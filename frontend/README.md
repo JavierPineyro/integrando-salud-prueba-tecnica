@@ -16,11 +16,11 @@ TODO:
 [x] maquetar listar pets page
 [x] hidratar página pets page
 [x] hacer funcionar el boton de activo en tabla pets
-[x] agregar el contador de pets activos/inactivos de listar pets tabla
+[] agregar el contador de pets activos/inactivos de listar pets tabla
 [x] maquetar formulario de crear pet
 [x] hidratar formulario de crear pet
-[] maquetar formulario de editar pet
-[] hidratar formulario de editar pet
+[x] maquetar formulario de editar pet
+[x] hidratar formulario de editar pet
 
 ## Tratamiento
 [] maquetar formulario de crear Tratamiento
