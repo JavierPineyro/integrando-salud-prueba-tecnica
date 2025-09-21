@@ -39,3 +39,17 @@ export function createSexoBadge(sexo) {
     return `<span class="sexo-badge">${sexoText}</span>`;
 }
 
+export function getColor(color) {
+    switch (color.toLowerCase()) {
+        case 'rojo':
+            return 'red';
+        case 'verde':
+            return 'green';
+        case 'amarillo':
+            return 'yellow';
+        case 'ámbar':
+            return 'amber';
+        default:
+            return 'black';
+    }
+}

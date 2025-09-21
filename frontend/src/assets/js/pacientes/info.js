@@ -1,4 +1,4 @@
-import {$, formatDate} from "../modules/utils.js";
+import {$, formatDate, getColor} from "../modules/utils.js";
 import { fetchData } from '../modules/api.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -76,21 +76,6 @@ function renderTableRows(treatments) {
     `;
     $tbody.appendChild(row);
   });
-}
-
-function getColor(color) {
-    switch (color.toLowerCase()) {
-        case 'rojo':
-            return 'red';
-        case 'verde':
-            return 'green';
-        case 'amarillo':
-            return 'yellow';
-        case 'ámbar':
-            return 'amber';
-        default:
-            return 'black';
-    }
 }
 
 function getLastTreatmentDate(treatments) {

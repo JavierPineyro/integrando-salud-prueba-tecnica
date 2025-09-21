@@ -10,7 +10,7 @@ TODO:
 [x] maquetar formulario editar paciente
 [x] hidratar formulario editar paciente
 [x] agregar que show endpoint devuelva al paciente Y sus tratamientos
-[] maquetar pagína info paciente
+[x] maquetar pagína info paciente
 
 ## Pets
 [] maquetar listar pets page
@@ -23,3 +23,5 @@ TODO:
 ## Tratamiento
 [] maquetar formulario de crear Tratamiento
 [] agregar iconos en donde corresponden
+
+## Agregar el Service en el backend

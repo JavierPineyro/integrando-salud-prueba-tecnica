@@ -1,0 +1,110 @@
+import {$, getColor} from "../modules/utils.js"
+import { fetchData } from '../modules/api.js';
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const $filter = $("#toggle_active")
+
+    $filter.addEventListener('change', (e) => {
+        loadPets({"con_inactivos": e.target.checked})
+    });
+
+    loadPets();
+});
+
+async function loadPets(filters = {}, page = 1) {
+
+    const $tbody = $("#pacientes_table_body");
+    const $paginationContainer = $(".pagination");
+    const $totalPets = $("#total_pets");
+    const $activesPets = $("#actives_pets");
+    const $inactivesPets = $("#inactives_pets");
+
+    const { con_inactivos = 0} = filters;
+    const value = con_inactivos ? "1" : "0"
+    
+    const queryParams = new URLSearchParams();
+    queryParams.append('con_inactivos', value);
+    queryParams.append('page', page);
+
+    $tbody.innerHTML = "";
+    $paginationContainer.innerHTML = "";
+
+    try {
+        const pets = await fetchData(`/api/pets?${queryParams.toString()}`);
+        $tbody.innerHTML = '';
+        
+        if (!pets || pets.data.length === 0) {
+            $tbody.innerHTML = `
+                <tr>
+                    <td colspan="8" class="text-center">No se encontraron resultados.</td>
+                </tr>
+            `;
+            $totalPets.textContent = 0;
+            $activesPets.textContent = 0;
+            $inactivesPets.textContent = 0;
+
+            return;
+        }
+    
+        $totalPets.textContent = pets.total
+        $activesPets.textContent = 2323;
+        $inactivesPets.textContent = 2323;
+
+        renderTableRows(pets.data)
+        
+        const prevButton = document.createElement('button');
+        prevButton.textContent = 'Anterior';
+        prevButton.disabled = !pets.prev_page_url;
+        prevButton.addEventListener('click', () => {
+            loadPets(filters, pets.current_page - 1);
+        });
+
+        const nextButton = document.createElement('button');
+        nextButton.textContent = 'Siguiente';
+        nextButton.disabled = !pets.next_page_url;
+        nextButton.addEventListener('click', () => {
+            loadPets(filters, pets.current_page + 1);
+        });
+
+        const pageInfo = document.createElement('span');
+        pageInfo.textContent = `Pág. ${pets.current_page} de ${pets.last_page}`;
+        $paginationContainer.appendChild(prevButton);
+        $paginationContainer.appendChild(pageInfo);
+        $paginationContainer.appendChild(nextButton);
+        
+    } catch (error) {
+        console.error('Error fetching patients:', error);
+        $tbody.innerHTML = '<tr><td colspan="8" class="text-center">Hubo un error al cargar los PETs.</td></tr>';
+        $paginationContainer.innerHTML = '';
+        alert('Hubo un error al cargar los PETs. Por favor, inténtelo de nuevo más tarde.');
+    }
+}  
+
+function renderTableRows(pets){
+    const $tbody = $("#pacientes_table_body");
+    $tbody.innerHTML = "";
+
+    if (pets.length === 0) {
+        $tbody.innerHTML = '<tr><td colspan="8" class="text-center">No hay tratamientos PET registrados.</td></tr>';
+        return;
+    }
+
+    pets.forEach(pet => {
+        const row = document.createElement('tr');
+        const color = getColor(pet.color);
+        row.innerHTML = `
+            <td>${pet.nombre}</td>
+            <td style="color: ${color};">${pet.color}</td>
+            <td>${pet.intensidad}/10</td>
+            <td>${pet.duracion_minutos}</td>
+            <td>${pet.ayuno ? "Sí" : "No"}</td>
+            <td>${pet.activo}</td>
+            <td>
+                <a title="editar" href="./editar.html?id=${pet.id}" class="edit-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen-icon lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>
+                </a>
+            </td>
+        `;
+        $tbody.appendChild(row);
+    });
+}

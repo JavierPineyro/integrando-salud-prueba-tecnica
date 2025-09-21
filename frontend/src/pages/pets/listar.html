@@ -1,0 +1,113 @@
+<html lang="es" view-transition>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Lista de Pets</title>
+    <link rel="stylesheet" href="../../assets/css/globals.css">
+    <link rel="stylesheet" href="../../assets/css/info-paciente.css">
+    <link rel="stylesheet" href="../../assets/css/pets.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="layout-header">
+        <div class="header-content-logo">
+            <div class="header-logo"></div>
+            <span class="header-title">Gestión Clínica</span>
+        </div>
+        <nav class="header-content-nav">
+            <a href="../../index.html" class="nav-link">Inicio</a>
+            <a href="./listar.html" class="nav-link">Lista Pacientes</a>
+            <a href="./crear.html" class="nav-link">Nuevo Paciente</a>
+            <a href="../pets/crear.html" class="nav-link">Tipos de PET</a>
+        </nav>
+    </header>
+    <main class="layout-main info_page_container">
+        <div class="info_page_page_header">
+            <section class="info_page_hero_section">            
+                <div class="info_page_title_divider">
+                    <svg class="info_page_users_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                    <div>
+                        <h1 class="info_page_title">Tipos de PET</h1>
+                        <p class="info_page_description">Gestione los tipos de tratamientos PET disponibles.</p>
+                    </div>
+                </div>
+                <a id="new_pet_link" class="main_button info" href="../pets/crear.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+                    Añadir PET
+                </a>
+            </section>
+        </div>
+        
+        <section class="info_page_cards">
+            <div class="card_pacientes">
+                <div class="total_pacientes_card_title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                    Total
+                </div>
+                <div class="total_pacientes_card_number" id="total_pets">
+                    0
+                </div>
+            </div>
+            <div class="card_pacientes" id="total_pacientes">
+                <div class="total_pacientes_card_title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                    Activos
+                </div>
+                <div class="total_pacientes_card_number" id="actives_pets">
+                    0
+                </div>
+            </div>
+            <div class="card_pacientes" id="total_resultados">
+                <div class="total_pacientes_card_title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                    Inactivos
+                </div>
+                <div class="total_pacientes_card_number" id="inactives_pets">
+                    0
+                </div>
+            </div>
+        
+        </section>
+
+        <section class="listar_page__table_section">
+            <h3 class="paciente_table_title">Lista de Tratamientos PET</h3>
+            <div class="filter-active">
+                <label for="toggle_active">Mostrar Inactivos</label>
+                <label class="switch">
+                  <input name="toggle_active" id="toggle_active" type="checkbox">
+                  <span class="slider"></span>
+                </label>
+            </div>
+            
+        
+            <table id="pacientes_table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Color</th>
+                        <th>Intensidad</th>
+                        <th>Duración (min.)</th>
+                        <th>Ayuno</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="pacientes_table_body">
+                    <!-- Aca se llenarán los datos de los pacientes dinámicamente -->
+                    
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button>Anterior</button>
+                Pág. 1 de 4
+                <button>Siguiente</button>
+            </div>
+        </section>
+    </main>
+    <footer class="layout-footer">
+        Prueba Técnica - Sistema de Gestión Clínica - 2025
+    </footer>
+    <script type="module" src="../../assets/js/modules/loadViewTransition.js"></script>
+    <script type="module" src="../../assets/js/pets/listar.js"></script>
+</body>
+</html>

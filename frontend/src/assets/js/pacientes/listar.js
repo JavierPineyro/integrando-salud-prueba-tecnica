@@ -56,6 +56,7 @@ async function loadPatients(filters = {}, page = 1) {
         $totalResults.textContent = patients.total;
         $xPacientes.textContent = patients.total;
         
+        // refactorizar esto en una funcion a parte
         patients.data.forEach(patient => {
             const row = document.createElement('tr');
             row.innerHTML = `
