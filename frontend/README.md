@@ -32,5 +32,5 @@ CON DOCKER O LOCAL MANUAL, SOLO DESCOMENTAR Y COMENTAR EL OTRO
 [x] agregar loader y desabilitar botones en editar forms?
 ## Agregar el Service en el backend
 [x] Testear los contenedores del backend de compose
-[] Agregar los servicios para abstraer logica de los controllers
+[x] Agregar los servicios para abstraer logica de los controllers
 [] Agregar README con pasos del servidor

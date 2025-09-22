@@ -1,0 +1,12 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend de la prueba técnica de Integrando Salud.",
+  "scripts": {
+    "start": "npx http-server ./src --port 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
