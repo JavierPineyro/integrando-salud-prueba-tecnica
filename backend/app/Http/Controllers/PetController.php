@@ -4,45 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pet;
+use App\Services\PetService;
 
 class PetController extends Controller
 {
+
+    protected $pet_service;
+
+    public function __construct(PetService $pet_service){
+        $this->pet_service = $pet_service;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
         $con_inactivos = $request->query('con_inactivos', '0') === '1';
-        $pets = Pet::query();
-
-        if (!$con_inactivos) {
-            $pets->where('activo', true);
-        }else{
-            $pets->where('activo', false);
-        }
+        $result = $this->pet_service->getAll($con_inactivos);
         
-
-        $lista_pets = $pets->orderBy('updated_at', 'desc')->paginate(10);
-
-        $total_actives = Pet::where("activo", true)->count();
-        $total_inactives = Pet::where("activo", false)->count();
-        $total_pet_items = Pet::count();
-
-        $result = $lista_pets->toArray();
-        $result["total_actives"] = $total_actives;
-        $result["total_inactives"] = $total_inactives;
-        $result["total_pet_items"] = $total_pet_items;
-
         return response()->json($result);
     }
 
     public function listAllActive()
     {
-        $pets = Pet::where('activo', true)
-                        ->orderBy('created_at', 'desc')
-                        ->select('id', 'nombre')
-                        ->get();
-        return response()->json($pets);
+        $result = $this->pet_service->getAllActives();
+        return response()->json($result);
     }
 
     /**
@@ -61,8 +48,8 @@ class PetController extends Controller
         ]);
 
         // Acá tammbien devuelve error 500 si falla, mucho boilerplate poner try catch
-        $pet = Pet::create($validatedData);
-        return response()->json($pet, 201);
+        $result = $this->pet_service->create($validatedData);
+        return response()->json($result, 201);
 
     }
 
@@ -71,7 +58,7 @@ class PetController extends Controller
      */
     public function show(string $id)
     {
-        $pet = Pet::find($id);
+        $pet = $this->pet_service->findById($id);
         if (!$pet) {
             return response()->json([
                 'message' => 'Tipo de tratamiento (PET) no encontrado'], 422);
@@ -84,25 +71,21 @@ class PetController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $pet = Pet::find($id);
-        if (!$pet) {
-            return response()->json(['message' => 'Tipo de tratamiento (PET) no encontrado'], 422);
-        }
+        try {
+            $validatedData = $request->validate([
+                'nombre' => 'sometimes|string|max:255',
+                'color' => 'sometimes|in:verde,amarillo,ambar,rojo',
+                'intensidad' => 'sometimes|integer|between:1,10',
+                'duracion_minutos' => 'sometimes|integer|min:1',
+                'ayuno' => 'sometimes|boolean',
+                'observaciones' => 'sometimes|string|nullable',
+                'activo' => 'sometimes|boolean',
+            ]);
 
-        $validatedData = $request->validate([
-            'nombre' => 'sometimes|string|max:255',
-            'color' => 'sometimes|in:verde,amarillo,ambar,rojo',
-            'intensidad' => 'sometimes|integer|between:1,10',
-            'duracion_minutos' => 'sometimes|integer|min:1',
-            'ayuno' => 'sometimes|boolean',
-            'observaciones' => 'sometimes|string|nullable',
-            'activo' => 'sometimes|boolean',
-        ]);
-
-        $is_success = $pet->update($validatedData);
-        if (!$is_success) {
-            return response()->json(['message' => 'Error al actualizar el tipo de tratamiento (PET)'], 422);
+            $result = $this->pet_service->update($id, $validatedData);
+            return response()->json($result);
+        } catch (Exception $e) {
+            return response()->json(['message' => 'Error al actualizar el pet:' . $e->getMessage()], 422);
         }
-        return response()->json($pet);
     }
 }
