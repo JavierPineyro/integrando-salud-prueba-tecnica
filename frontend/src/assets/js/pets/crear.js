@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
             petSchema.parse(data);
             
             const result = await postData('/api/pets', data);
-            alert('PET creado con éxito!');
+
+            localStorage.setItem('toast', JSON.stringify({
+                type: 'success',
+                message: 'PET creado con éxito!'
+            }));
             window.location.href = './listar.html';
 
         } catch (error) {
@@ -32,7 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 displayErrors(error.errors);
             } else {
                 console.error('Error al crear el PET:', error.message);
-                alert(`Error al crear el PET: ${error.message}`);
+                localStorage.setItem('toast', JSON.stringify({
+                    type: 'error',
+                    message: `Error al crear el PET: ${error.message}`
+                }));
+                window.location.href = './listar.html';
             }
         }
     });

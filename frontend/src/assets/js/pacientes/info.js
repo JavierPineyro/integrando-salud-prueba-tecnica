@@ -1,4 +1,4 @@
-import {$, formatDate, getColor} from "../modules/utils.js";
+import {$, formatDate, getColor, showToaster} from "../modules/utils.js";
 import { fetchData } from '../modules/api.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -13,7 +13,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = `../error.html?${msgParam.toString()}`;
         return;
     }
-
+    const toastData = localStorage.getItem('toast');
+    if (toastData) {
+        const { type, message } = JSON.parse(toastData);
+        showToaster(message, type);
+        localStorage.removeItem('toast');
+    }
     loadPatientsInfo(patientId);
 }
 );

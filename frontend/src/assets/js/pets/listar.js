@@ -1,9 +1,14 @@
-import {$, $$, getColor} from "../modules/utils.js"
+import {$, $$, getColor, showToaster} from "../modules/utils.js"
 import { fetchData, updateData } from '../modules/api.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const $filter = $("#toggle_active")
-    
+    const $filter = $("#toggle_active");
+    const toastData = localStorage.getItem('toast');
+    if (toastData) {
+        const { type, message } = JSON.parse(toastData);
+        showToaster(message, type);
+        localStorage.removeItem('toast');
+    }
 
     $filter.addEventListener('change', (e) => {
         loadPets({"con_inactivos": e.target.checked})
@@ -138,7 +143,7 @@ function setupTableEventListeners() {
         if (checkbox.matches('input[type="checkbox"][data-id-pet]')) {
             const petId = checkbox.dataset.idPet;
             const newStatus = checkbox.checked;
-            console.log(petId, newStatus)
+
             try {
                 const dataToUpdate = {
                     activo: newStatus

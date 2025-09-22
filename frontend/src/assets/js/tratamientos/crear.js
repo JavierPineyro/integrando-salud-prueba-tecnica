@@ -30,7 +30,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Verificar si alguna promesa fallo
     const errors = results.filter(result => result.status === 'rejected');
     if (errors.length > 0) {
-        alert('Hubo un error al cargar la información.');
+        localStorage.setItem('toast', JSON.stringify({
+            type: 'error',
+            message: 'Hubo un error al cargar la información.'
+        }));
         window.location.href = `../pacientes/lista-tratamientos.html?id=${patientId}`;
         return;
     }
@@ -56,7 +59,10 @@ async function handleSubmit(e) {
         tratamientoSchema.parse(data);
 
         const result = await postData('/api/tratamientos', data);
-        alert('Tratamiento creado con éxito!');
+        localStorage.setItem('toast', JSON.stringify({
+            type: 'success',
+            message: 'Tratamiento creado con éxito!'
+        }));
         window.location.href = `../pacientes/lista-tratamientos.html?id=${patientId}`;
 
     } catch (error) {
@@ -64,7 +70,11 @@ async function handleSubmit(e) {
             displayErrors(error.errors);
         } else {
             console.error('Error al crear el Tratamiento:', error.message);
-            alert(`Error al crear el Tratamiento: ${error.message}`);
+
+            localStorage.setItem('toast', JSON.stringify({
+                type: 'error',
+                message: `Error al crear el Tratamiento: ${error.message}`
+            }));
         }
     }
 }
@@ -84,7 +94,10 @@ async function loadPatientInfo(patientId) {
     } catch (error) {
         console.error('Error fetching patient:', error);
         
-        alert('Hubo un error al cargar los datos del paciente. Por favor, inténtelo de nuevo más tarde.');
+        localStorage.setItem('toast', JSON.stringify({
+            type: 'error',
+            message: 'Hubo un error al cargar los datos del paciente. Por favor, inténtelo de nuevo más tarde.'
+        }));
         window.location.href = `../pacientes/lista-tratamientos.html?id=${id}`
     }
 }  
@@ -107,8 +120,11 @@ async function loadPetTypes(patientId){
     } catch (error) {
         console.error('Error fetching pets:', error);
         
-        alert('Hubo un error al cargar los PETs activos. Por favor, inténtelo de nuevo más tarde.');
-        //window.location.href = `../pacientes/lista-tratamientos.html?id=${id}`
+        localStorage.setItem('toast', JSON.stringify({
+            type: 'error',
+            message: 'Hubo un error al cargar los PETs activos. Por favor, inténtelo de nuevo más tarde.'
+        }));
+        window.location.href = `../pacientes/lista-tratamientos.html?id=${id}`
     }
 }
 

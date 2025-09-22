@@ -62,7 +62,11 @@ async function handleFormSubmit(e) {
         pacienteSchema.parse(data);
         
         const result = await updateData(`/api/pacientes/${patientId}`, data);
-        alert('Paciente actualizado con éxito!');
+
+        localStorage.setItem('toast', JSON.stringify({
+            type: 'success',
+            message: 'Paciente actualizado con éxito!'
+        }));
         window.location.href = './listar.html';
 
     } catch (error) {
@@ -70,7 +74,12 @@ async function handleFormSubmit(e) {
             displayErrors(error.errors);
         } else {
             console.error('Error al actualizar el paciente:', error);
-            alert(`Error al actualizar el paciente: ${error.message}`);
+
+            localStorage.setItem('toast', JSON.stringify({
+                type: 'error',
+                message: `Error al actualizar el paciente: ${error.message}`
+            }));
+             window.location.href = './listar.html';
         }
     }
 }

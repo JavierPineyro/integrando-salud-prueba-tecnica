@@ -61,7 +61,11 @@ async function handleFormSubmit(e) {
         petSchema.parse(data);
         
         const result = await updateData(`/api/pets/${patientId}`, data);
-        alert('PET actualizado con éxito!');
+
+        localStorage.setItem('toast', JSON.stringify({
+            type: 'success',
+            message: 'PET actualizado con éxito!'
+        }));
         window.location.href = './listar.html';
 
     } catch (error) {
@@ -69,7 +73,12 @@ async function handleFormSubmit(e) {
             displayErrors(error.errors);
         } else {
             console.error('Error al actualizar el PET:', error);
-            alert(`Error al actualizar el PET: ${error.message}`);
+
+            localStorage.setItem('toast', JSON.stringify({
+                type: 'error',
+                message: `Error al actualizar el PET: ${error.message}`
+            }));
+             window.location.href = './listar.html';
         }
     }
 }

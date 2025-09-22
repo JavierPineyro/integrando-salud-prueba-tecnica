@@ -3,6 +3,20 @@ export const baseUrl = 'http://localhost:8000';
 export const $ = (selector) => document.querySelector(selector);
 export const $$ = (selector) => document.querySelectorAll(selector);
 
+export function showToaster(msg, type = "success"){
+    const toaster = new ToasterUi();
+
+    let customStyles;
+    if(type === "success") customStyles = {backgroundColor: "#e0e0e0", color: "green"}
+    else if(type === "error") customStyles = {backgroundColor: "#e0e0e0", color: "red"}
+    toaster.addToast(msg, type, {
+        autoClose: true,
+        duration: 2500,
+        styles: customStyles,
+        allowHtml: false
+      })
+}
+
 export function formatDate(dateString, locale = 'es-AR') {
   if (!dateString) return "";
 

@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const result = await postData('/api/pacientes', data);
             console.log('Paciente creado:', result);
-            alert('Paciente creado con éxito!');
+            localStorage.setItem('toast', JSON.stringify({
+                type: 'success',
+                message: 'Paciente creado exitosamente!'
+            }));
             window.location.href = './listar.html';
 
         } catch (error) {
@@ -32,7 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 displayErrors(error.issues);
             } else {
                 console.error('Error al crear el paciente:', error.message);
-                alert(`Error al crear el paciente: ${error.message}`);
+                localStorage.setItem('toast', JSON.stringify({
+                    type: 'error',
+                    message: `Error al crear el paciente: ${error.message}`
+                }));
+                window.location.href = './listar.html';
             }
         }
     });

@@ -1,10 +1,16 @@
-import {$, $$, createSexoBadge} from "../modules/utils.js"
+import {$, $$, createSexoBadge, showToaster} from "../modules/utils.js"
 import { fetchData } from '../modules/api.js';
 import { baseUrl, formatDate, calculateAge } from '../modules/utils.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const $form = $("#form_filter")
- 
+    const $form = $("#form_filter");
+    const toastData = localStorage.getItem('toast');
+    if (toastData) {
+        const { type, message } = JSON.parse(toastData);
+        showToaster(message, type);
+        localStorage.removeItem('toast');
+    }
+
     $form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
