@@ -23,7 +23,7 @@ TODO:
 [x] hidratar formulario de editar pet
 
 ## Tratamiento
-[] maquetar formulario de crear Tratamiento
+[x] maquetar formulario de crear Tratamiento
 [] agregar iconos en donde corresponden
 [] agregar toastify?
 [] agregar loader y desabilitar botones en editar forms?
