@@ -63,11 +63,10 @@ header .header-content-logo {
 header > .header-content-nav{
 	display: flex;
 	align-items: center;
-	justify-items: flex-end;
 	gap: .5rem;
 }
 
-.nav-link {
+header .nav-link {
 	text-decoration: none;
 	color: var(--primary-color);
 	font-weight: 500;
@@ -75,10 +74,15 @@ header > .header-content-nav{
 	border-radius: 8px;
 	transition: background-color 0.2s ease;
 	text-align: center;
-	&:hover {
-		color: var(--background-white);
-		background-color: #3335c7;
-	}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+header .nav-link:hover {
+	color: var(--background-white);
+	background-color: #3335c7;
 }
 
 .layout-main {

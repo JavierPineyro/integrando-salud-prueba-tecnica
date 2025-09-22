@@ -1,7 +1,7 @@
 import { z } from 'https://cdn.skypack.dev/zod';
 
 export const pacienteSchema = z.object({
-    nombre: z.string().min(1, { message: "El nombre es requerido." }),
+    nombre: z.string().min(1, { message: "El nombre es requerido." }).max(100, {message: "El nombre debe de ser menos de 100 caracteres.}),
     apellido: z.string().min(1, { message: "El apellido es requerido." }),
     sexo: z.enum(['F', 'M'], { errorMap: () => ({ message: "Debe seleccionar un sexo." }) }),
     dni: z.string().min(7, { message: "El DNI debe tener al menos 7 caracteres." }),
