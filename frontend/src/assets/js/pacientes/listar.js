@@ -50,8 +50,8 @@ async function loadPatients(filters = {}, page = 1) {
             return;
         }
     
-        $totalPatients.textContent = patients.data.length;
-        $totalResults.textContent = patients.total;
+        $totalResults.textContent = patients.data.length;
+        $totalPatients.textContent = patients.total;
         $xPacientes.textContent = patients.total;
         
         // refactorizar esto en una funcion a parte

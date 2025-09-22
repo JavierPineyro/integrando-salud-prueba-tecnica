@@ -78,7 +78,7 @@ async function loadPatientInfo(patientId) {
         const patient = await fetchData(`/api/pacientes/${id}`);
 
         $pacienteInfo.textContent = `Paciente: ${patient.nombre} ${patient.apellido} - DNI: ${patient.dni}`;
-        $goBack.href = `../pacientes/info.html?id=${id}`
+        $goBack.href = `../pacientes/lista-tratamientos.html?id=${id}`
                 
     } catch (error) {
         console.error('Error fetching patient:', error);
