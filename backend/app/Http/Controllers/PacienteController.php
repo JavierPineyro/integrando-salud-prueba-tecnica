@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paciente;
+use App\Services\PacienteService;
 
 class PacienteController extends Controller
 {
+    protected $paciente_service;
+    
+    public function __construct(PacienteService $paciente_service) {
+        $this->paciente_service = $paciente_service;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -14,17 +21,8 @@ class PacienteController extends Controller
     {
         $apellido = $request->query('apellido');
         $dni = $request->query('dni');
-        
-        $pacientes = Paciente::query();
 
-        if ($apellido) {
-            $pacientes->where('apellido', 'like', '%' . $apellido . '%');
-        }
-        if ($dni) {
-            $pacientes->where('dni', $dni);
-        }
-
-        $lista_pacientes = $pacientes->orderBy('created_at', 'desc')->paginate(10);
+        $lista_pacientes = $this->paciente_service->getAll($apellido, $dni);
         return response()->json($lista_pacientes);
 
     }
@@ -44,9 +42,8 @@ class PacienteController extends Controller
 
         // Si falla lanza un error 500 automáticamente creo
         // no voy a poner try catch para esto, demasiado boilerplate
-        $paciente = Paciente::create($validatedData);
-        return response()->json($paciente, 201);
-
+        $result = $this->paciente_service->create($validatedData);
+        return response()->json($result, 201);
     }
 
     /**
@@ -54,13 +51,11 @@ class PacienteController extends Controller
      */
     public function show(string $id)
     {
-        $paciente = Paciente::with(['tratamientos.pet'])->withCount('tratamientos')->find($id);
+        $paciente = $this->paciente_service->findById($id);
         if (!$paciente) {
             return response()->json(['message' => 'Paciente no encontrado'], 422);
         }
 
-        $petsUniqueCount = $paciente->tratamientos->pluck('pet.id')->filter()->unique()->count();
-        $paciente->setAttribute('pets_unique_count', $petsUniqueCount);
         return response()->json($paciente);
     }
 
@@ -69,24 +64,18 @@ class PacienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $paciente = Paciente::find($id);
-        if (!$paciente) {
-            return response()->json(['message' => 'Paciente no encontrado'], 422);
-        }
-
-        $validatedData = $request->validate([
-            'nombre' => 'sometimes|string|max:100',
-            'apellido' => 'sometimes|string|max:100',
-            'dni' => 'sometimes|integer|unique:pacientes,dni,' . $id,
-            'fecha_nacimiento' => 'sometimes|date',
-            'sexo' => 'sometimes|in:M,F',
-        ]);
-
-        $is_success = $paciente->update($validatedData);
-        if (!$is_success) {
-            return response()->json(['message' => 'Error al actualizar el paciente'], 422);
-        }
-        return response()->json($paciente);
+        try {
+            $validatedData = $request->validate([
+                'nombre' => 'sometimes|string|max:100',
+                'apellido' => 'sometimes|string|max:100',
+                'dni' => 'sometimes|integer|unique:pacientes,dni,' . $id,
+                'fecha_nacimiento' => 'sometimes|date',
+                'sexo' => 'sometimes|in:M,F',
+            ]);
+            $result =$this->paciente_service->update($id, $validatedData);
+            return response()->json($result);
+        } catch (Exception $e) {
+            return response()->json(['message' => 'Error al actualizar el paciente:' . $e->getMessage()], 422);
+        } 
     }
-
 }

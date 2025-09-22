@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Services;
+
 use App\Models\Paciente;
 
 class PacienteService {
@@ -12,7 +14,7 @@ class PacienteService {
         if ($dni) {
             $query->where('dni', $dni);
         }
-        return $query->paginate($perPage);
+        return $query->orderBy('created_at', 'desc')->paginate($perPage);
     }
 
     function create($data) {
