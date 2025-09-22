@@ -100,7 +100,10 @@ function renderTableRows(pets){
                 <span style=" height:20px; width:20px; border-radius:9999px; background-color:${color}; display:flex; justify-content:center; align-items:center;"></span>
             </td>
             <td>${pet.intensidad}/10</td>
-            <td style="font-weight: 600;">${pet.duracion_minutos}</td>
+            <td style="font-weight: 600; gap:5px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock9-icon lucide-clock-9"><path d="M12 6v6H8"/><circle cx="12" cy="12" r="10"/></svg>
+                ${pet.duracion_minutos}
+            </td>
             <td>${pet.ayuno ? "Sí" : "No"}</td>
             <td id="t_obs" title="${pet.observaciones}">${pet.observaciones}</td>
             <td title="${pet.activo ? "Activo" : "Inactivo"}">
