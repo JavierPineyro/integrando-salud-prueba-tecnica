@@ -7,6 +7,14 @@
 </head>
 <body>
     <h1>Algo salió mal.</h1>
-    <p>Intenta de nuevo más tarde.</p>
+    <p id="error-msg">Intenta de nuevo más tarde.</p>
+    <a href="../index.html">Volver al Inicio</a>
+    <script>
+        const msg = new URLSearchParams(window.location.search);
+        const $msgContainer = document.querySelector("#error-msg");
+
+        if(!msg) $msgContainer.textContent = "Intenta de nuevo más tarde.";
+        msgContainer.textContent = decodeURIComponent(msg)
+    </script>
 </body>
 </html>
