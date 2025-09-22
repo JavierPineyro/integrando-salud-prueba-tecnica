@@ -1,8 +1,6 @@
 import {$, $$, createSexoBadge} from "../modules/utils.js"
 import { fetchData } from '../modules/api.js';
 import { baseUrl, formatDate, calculateAge } from '../modules/utils.js';
-//const currentPath = window.location.pathname;
-
 
 document.addEventListener('DOMContentLoaded', async () => {
     const $form = $("#form_filter")
@@ -33,7 +31,7 @@ async function loadPatients(filters = {}, page = 1) {
     if (dni) queryParams.append('dni', dni);
     queryParams.append('page', page);
 
-    $tbody.innerHTML = "";
+    $tbody.innerHTML = "<div style='width: 100%; text-align:center; font-size: 2rem; font-weight: 600;'>Cargando ...</div>";
     $paginationContainer.innerHTML = "";
 
     try {
@@ -52,7 +50,7 @@ async function loadPatients(filters = {}, page = 1) {
             return;
         }
     
-        $totalPatients.textContent = 0;
+        $totalPatients.textContent = patients.data.length;
         $totalResults.textContent = patients.total;
         $xPacientes.textContent = patients.total;
         
@@ -100,7 +98,7 @@ async function loadPatients(filters = {}, page = 1) {
         $paginationContainer.appendChild(nextButton);
         
     } catch (error) {
-         console.error('Error fetching patients:', error);
+        console.error('Error fetching patients:', error);
         $tbody.innerHTML = '<tr><td colspan="8" class="text-center">Hubo un error al cargar los pacientes.</td></tr>';
         $paginationContainer.innerHTML = '';
         alert('Hubo un error al cargar los pacientes. Por favor, inténtelo de nuevo más tarde.');
