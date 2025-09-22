@@ -1,4 +1,5 @@
 <?php
+namespace App\Services;
 
 use App\Models\Tratamiento;
 
@@ -11,7 +12,7 @@ class TratamientoService
             $query->where('paciente_id', $paciente_id);
         }
 
-        return $query->paginate(10);
+        return $query->orderBy('created_at', 'desc')->paginate(10);
     }
 
     function create($data) {

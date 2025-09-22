@@ -4,24 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tratamiento;
+use App\Services\TratamientoService;
 
 class TratamientoController extends Controller
 {
+    protected $tratamiento_service;
+
+    public function __construct(TratamientoService $tratamiento_service){
+        $this->tratamiento_service = $tratamiento_service;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
         $paciente_id = $request->query('paciente_id');
-        $query = Tratamiento::with(['paciente', 'pet']);
-
-        if ($paciente_id) {
-            $query->where('paciente_id', $paciente_id);
-        }
-
-        $tratamientos = $query->orderBy('created_at', 'desc')->paginate(10);
-        return response()->json($tratamientos);
-
+        $result = $this->tratamiento_service->getAll($paciente_id);
+        return response()->json($result);
     }
 
     /**
@@ -35,10 +35,8 @@ class TratamientoController extends Controller
             'fecha_inicio' => 'required|date',
         ]);
 
-        $tratamiento = Tratamiento::create($validatedData);
-        $full_response = $tratamiento->load(['paciente', 'pet']);
-        return response()->json($full_response, 201);
-
+        $result = $this->tratamiento_service->create($validatedData);
+        return response()->json($result, 201);
     }
 
 }
