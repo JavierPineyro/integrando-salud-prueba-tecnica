@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     patientId = params.get('id');
     
     if (!patientId || isNaN(Number(patientId))) {
-        alert('No se proporcionó un ID de PET.');
-        window.location.href = '../error.html';
-        return;
+         alert('No se proporcionó un ID del PET.');
+        let msgParam = new URLSearchParams();
+        msgParam.append("msg", 'No se proporcionó un ID del PET por lo que no puede acceder a esa página.')
+        window.location.href = `../error.html?${msgParam.toString()}`;
     }
 
     loadPatientData(patientId);

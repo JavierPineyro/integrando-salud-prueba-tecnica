@@ -27,10 +27,10 @@ CON DOCKER O LOCAL MANUAL, SOLO DESCOMENTAR Y COMENTAR EL OTRO
 
 ## Tratamiento
 [x] maquetar formulario de crear Tratamiento
-[] agregar iconos en donde corresponden
+[x] agregar iconos en donde corresponden
 [] agregar toastify?
-[] agregar loader y desabilitar botones en editar forms?
+[x] agregar loader y desabilitar botones en editar forms?
 ## Agregar el Service en el backend
-[] Testear los contenedores del backend de compose
+[x] Testear los contenedores del backend de compose
 [] Agregar los servicios para abstraer logica de los controllers
 [] Agregar README con pasos del servidor

@@ -12,9 +12,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     patientId = params.get('id');
     
     if (!patientId || isNaN(Number(patientId))) {
-        alert('No se proporcionó un ID del Paciente.');
-        window.location.href = '../error.html?msg="No existe la página que quiere visitar"';
-        return;
+         alert('No se proporcionó un ID del Paciente.');
+        let msgParam = new URLSearchParams();
+        msgParam.append("msg", 'No se proporcionó un ID del Paciente por lo que no puede acceder a esa página.')
+        window.location.href = `../error.html?${msgParam.toString()}`;
     }
     $('#paciente_info').textContent = "Cargando ..."
     $('#new_treatment_btn').disabled = true

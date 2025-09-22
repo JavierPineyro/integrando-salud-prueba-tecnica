@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!patientId || isNaN(Number(patientId))) {
         alert('No se proporcionó un ID de paciente.');
-        window.location.href = '../error.html';
+        let msgParam = new URLSearchParams();
+        msgParam.append("msg", 'No se proporcionó un ID de paciente por lo que no puede acceder a esa página.')
+        window.location.href = `../error.html?${msgParam.toString()}`;
         return;
     }
 
@@ -28,7 +30,9 @@ async function loadPatientData(id) {
     } catch (error) {
         console.error('Error al cargar los datos del paciente:', error);
         alert('No se pudieron cargar los datos del paciente.');
-        window.location.href = "../error.html?msg='No se pudo cargar los datos del paciente. Intenta de nueva más tarde.'";
+        let msqParams = new URLSearchParams();
+        msqParams.append("msg", "No se pudo cargar los datos del paciente. Intenta de nueva más tarde.");
+        window.location.href = `../error.html?${msqParams.toString()}`;
     }
 }
 

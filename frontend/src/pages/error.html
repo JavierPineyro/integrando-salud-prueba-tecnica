@@ -10,11 +10,19 @@
     <p id="error-msg">Intenta de nuevo más tarde.</p>
     <a href="../index.html">Volver al Inicio</a>
     <script>
-        const msg = new URLSearchParams(window.location.search);
-        const $msgContainer = document.querySelector("#error-msg");
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
 
-        if(!msg) $msgContainer.textContent = "Intenta de nuevo más tarde.";
-        msgContainer.textContent = decodeURIComponent(msg)
+        const $msgContainer = document.querySelector("#error-msg");
+        
+        console.log(params.get("msg"), $msgContainer);
+
+        if(!params.get("msg")) $msgContainer.textContent = "Intenta de nuevo más tarde.";
+        else $msgContainer.textContent = params.get("msg");
+
+    });
+
     </script>
 </body>
 </html>

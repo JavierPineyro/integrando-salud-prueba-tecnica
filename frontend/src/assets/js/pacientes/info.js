@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!patientId ||  isNaN(Number(patientId))) {
         alert('ID de paciente no proporcionado en la URL.');
-        window.location.href = './listar.html';
+        const msgParam = new URLSearchParams();
+        msgParam.append('msg', "ID de paciente no proporcionado en la URL. No puede acceder a esta página.");
+        window.location.href = `../error.html?${msgParam.toString()}`;
         return;
     }
 
@@ -51,6 +53,7 @@ async function loadPatientsInfo(patientId) {
         console.error('Error fetching patients:', error);
         $tbody.innerHTML = '<tr><td colspan="8" class="text-center">Hubo un error al cargar los pacientes.</td></tr>';
         alert('Hubo un error al cargar los pacientes. Por favor, inténtelo de nuevo más tarde.');
+        window.location.href = "./listar.html";
     }
 }  
 
