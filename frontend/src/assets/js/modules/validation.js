@@ -1,16 +1,20 @@
 import { z } from 'https://cdn.skypack.dev/zod';
 
 export const pacienteSchema = z.object({
-    nombre: z.string().min(1, { message: "El nombre es requerido." }).max(100, {message: "El nombre debe de ser menos de 100 caracteres.}),
-    apellido: z.string().min(1, { message: "El apellido es requerido." }),
-    sexo: z.enum(['F', 'M'], { errorMap: () => ({ message: "Debe seleccionar un sexo." }) }),
+    nombre: z.string().min(1, { message: "El nombre es requerido." }).max(100, { message: "El nombre no debe ser mayor a 100 caracteres." }),
+    apellido: z.string().min(1, { message: "El apellido es requerido." }).max(100, { message: "El apellido no debe ser mayor a 100 caracteres." }),
+    sexo: z.enum(['F', 'M'], {
+          error: (issue) => `Valor inválido. Se esperaba: Hombre('M') o Mujer('F')`
+        }),
     dni: z.string().min(7, { message: "El DNI debe tener al menos 7 caracteres." }),
     fecha_nacimiento: z.string().min(1, { message: "La fecha de nacimiento es requerida." })
 });
 
 export const petSchema = z.object({
     nombre: z.string().min(1, { message: "El nombre es requerido." }),
-    color: z.enum(['verde', 'amarillo', 'ambar', 'rojo'], { errorMap: () => ({ message: "Debe seleccionar un color." }) }),
+    color: z.enum(['verde', 'amarillo', 'ambar', 'rojo'], {
+          error: (issue) => `Valor inválido. Se esperaba: 'verde', 'amarillo', 'ambar' o 'rojo'.`
+        }),
     duracion_minutos: z.coerce.number().min(1, { message: "La duración debe ser mayor a 0." }),
     intensidad: z.coerce.number().min(1, { message: "La intensidad debe ser al menos 1." }).max(10, { message: "La intensidad no puede ser mayor a 10." }),
     ayuno: z.preprocess(value => value === 'on', z.boolean()),

@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             if (error instanceof ZodError) {
-                displayErrors(error.errors);
+                displayErrors(error.issues);
             } else {
                 console.error('Error al crear el paciente:', error.message);
                 alert(`Error al crear el paciente: ${error.message}`);
