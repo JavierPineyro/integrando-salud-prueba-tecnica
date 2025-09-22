@@ -16,3 +16,9 @@ export const petSchema = z.object({
     ayuno: z.preprocess(value => value === 'on', z.boolean()),
     observaciones: z.string().max(100, { message: "Las observaciones no pueden superar los 100 caracteres." }).optional(),
 });
+
+export const tratamientoSchema = z.object({
+    paciente_id: z.number().min(1, {message: "El ID del Paciente es requerido para crear el Tratamiento"}),
+    pet_id: z.number().min(1, {message: "El Tipo de PET es requerido para crear el tratamiento"}),
+    fecha_inicio: z.string().min(1, {message: "La fecha de inicio es requerida"}),
+})

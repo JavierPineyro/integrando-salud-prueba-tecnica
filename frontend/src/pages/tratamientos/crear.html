@@ -1,0 +1,66 @@
+<html lang="es" view-transition>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Crear Pacientes</title>
+    <link rel="stylesheet" href="../../assets/css/globals.css">
+    <link rel="stylesheet" href="../../assets/css/crear-paciente.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="layout-header">
+        <div class="header-content-logo">
+            <div class="header-logo"></div>
+            <span class="header-title">Gestión Clínica</span>
+        </div>
+        <nav class="header-content-nav">
+            <a href="../../index.html" class="nav-link">Inicio</a>
+            <a href="../pacientes/listar.html" class="nav-link">Lista Pacientes</a>
+            <a href="../pacientes/crear.html" class="nav-link">Nuevo Paciente</a>
+            <a href="../pets/listar.html" class="nav-link">Tipos de PET</a>
+        </nav>
+    </header>
+    <main class="layout-main listar_page__container crear_paciente__main">
+            <div class="crear_paciente__page_header">
+                <a id="go_back_to_listar" href="../pacientes/listar.html"><- Volver</a>
+                <section class="listar_page__hero_section">            <div class="listar_page__title_divider">
+                <svg class="listar_page__users_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                <div>
+                    <h1 class="listar_page__title">Crear Nuevo Tratamiento</h1>
+                    <p class="listar_page__description" id="paciente_info">Paciente: ...</p>
+        </section>
+    </div>
+        
+        <section class="listar_page__dashboard_head">
+            <div class="card_pacientes" id="filtro">
+                <h5 class="crear_paciente__form_title">Información del Tratamiento</h5>
+                <form id="form_filter" action="">
+                    
+                    <div class="container_input_create">
+                        <div class="input-group">
+                            <label for="pet_id">Tipo de PET*</label>
+                            <select name="pet_id" id="pet_id" required>
+                                <option value="" disabled selected>Seleccionar...</option>
+                               <!-- Aca va el dato dinamico-->
+                            </select>
+                            <p class="error-text" id="error-sexo"></p>
+                        </div>
+                        <div class="input-group">
+                            <label for="fecha_inicio">Fecha de Inicio*</label>
+                            <input type="date" name="fecha_inicio" id="fecha_inicio" required />
+                            <p class="error-text" id="error-fecha_nacimiento"></p>
+                        </div>
+                    </div>
+                    <button id="new_treatment_btn" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save-icon lucide-save"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"/><path d="M7 3v4a1 1 0 0 0 1 1h7"/></svg>Crear Tratamiento</button>
+                </form>
+            </div>
+
+        </section>
+    </main>
+    <footer class="layout-footer">
+        Prueba Técnica - Sistema de Gestión Clínica - 2025
+    </footer>
+    <script type="module" src="../../assets/js/modules/loadViewTransition.js"></script>
+    <script type="module" src="../../assets/js/tratamientos/crear.js"></script>
+</body>
+</html>

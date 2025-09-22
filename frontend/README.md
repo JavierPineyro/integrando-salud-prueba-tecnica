@@ -16,7 +16,7 @@ TODO:
 [x] maquetar listar pets page
 [x] hidratar página pets page
 [x] hacer funcionar el boton de activo en tabla pets
-[] agregar el contador de pets activos/inactivos de listar pets tabla
+[x] agregar el contador de pets activos/inactivos de listar pets tabla
 [x] maquetar formulario de crear pet
 [x] hidratar formulario de crear pet
 [x] maquetar formulario de editar pet
@@ -25,5 +25,6 @@ TODO:
 ## Tratamiento
 [] maquetar formulario de crear Tratamiento
 [] agregar iconos en donde corresponden
-
+[] agregar toastify?
+[] agregar loader y desabilitar botones en editar forms?
 ## Agregar el Service en el backend

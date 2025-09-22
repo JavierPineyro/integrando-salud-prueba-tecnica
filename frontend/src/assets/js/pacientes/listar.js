@@ -58,8 +58,8 @@ async function loadPatients(filters = {}, page = 1) {
         
         // refactorizar esto en una funcion a parte
         patients.data.forEach(patient => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
+            const $row = document.createElement('tr');
+            $row.innerHTML = `
                 <td>${patient.nombre}</td>
                 <td>${patient.apellido}</td>
                 <td>${patient.dni}</td>
@@ -76,7 +76,7 @@ async function loadPatients(filters = {}, page = 1) {
                         </a>
                 </td>
             `;
-            $tbody.appendChild(row);
+            $tbody.appendChild($row);
         });
         
         const prevButton = document.createElement('button');
