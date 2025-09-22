@@ -22,9 +22,15 @@ TODO:
 [x] maquetar formulario de editar pet
 [x] hidratar formulario de editar pet
 
+ATENCION EL .ENV HAY QUE MODIFICAR EL HOSTDB DEPENDIENDO DE SI ES
+CON DOCKER O LOCAL MANUAL, SOLO DESCOMENTAR Y COMENTAR EL OTRO
+
 ## Tratamiento
-[] maquetar formulario de crear Tratamiento
+[x] maquetar formulario de crear Tratamiento
 [] agregar iconos en donde corresponden
 [] agregar toastify?
 [] agregar loader y desabilitar botones en editar forms?
 ## Agregar el Service en el backend
+[] Testear los contenedores del backend de compose
+[] Agregar los servicios para abstraer logica de los controllers
+[] Agregar README con pasos del servidor
