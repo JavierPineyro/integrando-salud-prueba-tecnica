@@ -19,4 +19,4 @@ Route::get('pets', [PetController::class, 'index']);
 Route::get('pets/{id}', [PetController::class, 'show']);
 Route::post('pets', [PetController::class, 'store']);
 Route::put('pets/{id}', [PetController::class, 'update']);
-Route::get('pets/activos', [PetController::class, 'listAllActive']);
+Route::get('pets/activos/all', [PetController::class, 'listAllActive']);
