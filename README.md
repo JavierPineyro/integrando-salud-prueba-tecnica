@@ -45,7 +45,7 @@ Para poder ejecutar esta aplicación, necesitarás los siguientes componentes in
     * Accede a la carpeta del frontend y levanta el servidor HTTP.
         ```bash
         cd frontend
-        npm start     //<-- esto ejecuta el script en package.json
+        npm start     
         ```
     * **Nota**: Al ser un frontend con HTML, CSS y JavaScript puros, no se requiere instalación de dependencias, pero sí se necesita un servidor HTTP para evitar problemas de CORS y acceso a archivos.
 
