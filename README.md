@@ -46,7 +46,8 @@ Para poder ejecutar esta aplicación, necesitarás los siguientes componentes in
         ```bash
         docker-compose exec backend php artisan migrate --seed
         ```
-
+    * **Nota**: Si te falla la migración solo vuelve a intentarlo unos segundos después.
+ 
 5.  **Levantar el servidor del frontend**:
     * Accede a la carpeta del frontend y levanta el servidor HTTP.
         ```bash
