@@ -17,7 +17,7 @@ Para poder ejecutar esta aplicación, necesitarás los siguientes componentes in
 
 1.  **Clonar el repositorio**:
     ```bash
-    git clone [https://github.com/JavierPineyro/integrando-salud-prueba-tecnica](https://github.com/JavierPineyro/integrando-salud-prueba-tecnica)
+    git clone https://github.com/JavierPineyro/integrando-salud-prueba-tecnica
     cd integrando-salud-prueba-tecnica
     ```
 
