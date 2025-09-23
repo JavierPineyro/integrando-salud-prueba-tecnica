@@ -12,13 +12,13 @@ Se maquetó el sistema pensando en un dashboard moderno y fácil de utilizar.
 
 ### Índice
 
-* 💻 [Requisitos del Sistema](#requisitos-del-sistema)
-* 🛠️ [Instalación y Configuración](#instalacion-y-configuracion)
-* 📁 [Estructura de Carpetas](#estructura-de-carpetas)
-* 🚀 [Tecnologías Utilizadas](#tecnologias-utilizadas)
-* ✨ [Funcionalidades Implementadas](#funcionalidades-implementadas)
-* 🛑 [Detener los Contenedores](#detener-los-contenedores)
-* 📧 [Contacto](#contacto)
+* 💻 [Requisitos del Sistema](#-requisitos-del-sistema)
+* 🛠️ [Instalación y Configuración](#-instalacion-y-configuracion)
+* 📁 [Estructura de Carpetas](#-estructura-de-carpetas)
+* 🚀 [Tecnologías Utilizadas](#-tecnologias-utilizadas)
+* ✨ [Funcionalidades Implementadas](#-funcionalidades-implementadas)
+* 🛑 [Detener los Contenedores](#-detener-los-contenedores)
+* 📧 [Contacto](#-contacto)
   
 ---
 
