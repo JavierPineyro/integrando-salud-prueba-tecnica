@@ -15,7 +15,7 @@ Se maquetó el sistema pensando en un dashboard moderno y fácil de utilizar.
 * 💻 [Requisitos del Sistema](#-requisitos-del-sistema)
 * 🛠️ [Instalación y Configuración](#️-instalación-y-configuración)
 * 📁 [Estructura de Carpetas](#-estructura-de-carpetas)
-* 🚀 [Tecnologías Utilizadas](#-tecnologóas-utilizadas)
+* 🚀 [Tecnologías Utilizadas](#-tecnologías-utilizadas)
 * ✨ [Funcionalidades Implementadas](#-funcionalidades-implementadas)
 * 🛑 [Detener los Contenedores](#-detener-los-contenedores)
 * 📧 [Contacto](#-contacto)
