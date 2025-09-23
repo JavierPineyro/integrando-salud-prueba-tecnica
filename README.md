@@ -16,8 +16,8 @@ Se maquetó el sistema pensando en un dashboard moderno y fácil de utilizar.
 
 Para poder ejecutar esta aplicación, necesitarás los siguientes componentes instalados en tu sistema:
 
-* **Docker y Docker Compose**: El proyecto se ejecuta en contenedores. El archivo `docker-compose.yml` se encarga de construir la imagen de Laravel y de levantar el servidor web y la base de datos MySQL.
-* **Node.js y npm**: Se necesita una versión reciente de Node.js (20 o superior es recomendable) para instalar y ejecutar el servidor web del frontend, ya que se usa `npx http-server`.
+* **[Docker](https://www.docker.com/) y [Docker Compose](https://docs.docker.com/compose/)**: El proyecto se ejecuta en contenedores. El archivo `docker-compose.yml` se encarga de construir la imagen de Laravel y de levantar el servidor web y la base de datos MySQL.
+* **[Node.js](https://nodejs.org/es) y [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)**: Se necesita una versión reciente de Node.js (20 o superior es recomendable) para instalar y ejecutar el servidor web del frontend, ya que se usa `npx http-server`.
 
 ---
 
@@ -90,8 +90,8 @@ integrando-salud-prueba-tecnica/
 * **Contenedores**: Docker.
 * **Servidor Frontend**: `http-server`.
 ### Bibliotecas Utilizadas
-* **Validaciones**: Zod.
-* **Notificaciones**: Toaster UI.
+* **Validaciones**: [Zod](https://zod.dev/).
+* **Notificaciones**: [Toaster UI](https://toster-js.vercel.app/).
 ---
 
 ### Funcionalidades Implementadas
