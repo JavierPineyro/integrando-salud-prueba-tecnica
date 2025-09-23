@@ -42,7 +42,7 @@ Para poder ejecutar esta aplicación, necesitarás los siguientes componentes in
     * La base de datos estará lista cuando el estado de su contenedor muestre **(healthy)**. Si dice `(starting...)` o `(health: starting)`, debes seguir esperando.
 
 4.  **Ejecutar las migraciones de la base de datos**:
-    * Una vez que la base de datos esté disponible, accede al contenedor del backend y ejecuta las migraciones para crear las tablas y poblar la base de datos con datos de prueba:
+    * Una vez que la base de datos esté disponible (Deja unos segundos más por si acaso), accede al contenedor del backend y ejecuta las migraciones para crear las tablas y poblar la base de datos con datos de prueba:
         ```bash
         docker-compose exec backend php artisan migrate --seed
         ```
