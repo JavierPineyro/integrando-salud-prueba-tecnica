@@ -10,9 +10,19 @@ Se maquetó el sistema pensando en un dashboard moderno y fácil de utilizar.
 
 ![Dashboard Screenshot](./frontend/screenshots/lista-pacientes.png)
 
+### Índice
+
+* 💻 [Requisitos del Sistema](#requisitos-del-sistema)
+* 🛠️ [Instalación y Configuración](#instalacion-y-configuracion)
+* 📁 [Estructura de Carpetas](#estructura-de-carpetas)
+* 🚀 [Tecnologías Utilizadas](#tecnologias-utilizadas)
+* ✨ [Funcionalidades Implementadas](#funcionalidades-implementadas)
+* 🛑 [Detener los Contenedores](#detener-los-contenedores)
+* 📧 [Contacto](#contacto)
+  
 ---
 
-### Requisitos del Sistema
+### 💻 Requisitos del Sistema
 
 Para poder ejecutar esta aplicación, necesitarás los siguientes componentes instalados en tu sistema:
 
@@ -21,7 +31,7 @@ Para poder ejecutar esta aplicación, necesitarás los siguientes componentes in
 
 ---
 
-### Instalación y Configuración
+### 🛠️ Instalación y Configuración
 
 1.  **Clonar el repositorio**:
     ```bash
@@ -63,7 +73,7 @@ Para poder ejecutar esta aplicación, necesitarás los siguientes componentes in
 
 ---
 
-### Estructura de Carpetas
+### 📁 Estructura de Carpetas
 
 ```bash
 integrando-salud-prueba-tecnica/
@@ -82,7 +92,7 @@ integrando-salud-prueba-tecnica/
 
 ---
 
-### Tecnologías Utilizadas
+### 🚀 Tecnologías Utilizadas
 
 * **Backend**: PHP 8.3.6 y Laravel.
 * **Frontend**: HTML, CSS y JavaScript puros.
@@ -94,7 +104,7 @@ integrando-salud-prueba-tecnica/
 * **Notificaciones**: [Toaster UI](https://toster-js.vercel.app/).
 ---
 
-### Funcionalidades Implementadas
+### ✨ Funcionalidades Implementadas
 
 * **Gestión de Pacientes**:
     * Alta, modificación y listado de pacientes.
@@ -112,7 +122,7 @@ integrando-salud-prueba-tecnica/
 
 ---
 
-### Detener los Contenedores
+### 🛑 Detener los Contenedores
 
 Una vez que hayas terminado de usar la aplicación, puedes detener los contenedores y limpiar los recursos.
 
@@ -128,7 +138,7 @@ Una vez que hayas terminado de usar la aplicación, puedes detener los contenedo
     ```
     La opción `-v` es crucial porque elimina los volúmenes de datos. Si usas este comando y luego quieres volver a levantar la aplicación, tendrás que repetir todos los pasos de instalación, incluyendo las migraciones y los `seeders`, para recrear las tablas y los datos.
 
-### Contacto
+### 📧 Contacto
 
 Para cualquier consulta o duda sobre el proyecto, no dudes en contactarme.
 **Dario Javier Piñeyro**
