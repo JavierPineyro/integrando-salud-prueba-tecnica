@@ -2,6 +2,11 @@
 
 Este proyecto es una herramienta web para gestionar pacientes y tratamientos médicos de un equipo llamado "PET", desarrollada para la prueba técnica de Integrando Salud. Su propósito es demostrar las habilidades en desarrollo full-stack, con un enfoque en la claridad, organización del código y funcionalidad.
 
+El sistema está dividido en /backend (Construido con php y Laravel), el /frontend (Construido con html, css y javascript) y la base de datos utilizada es MySQL.
+¿Por qué con Docker/Docker Compose? Se construyó el sistema pensando en poder distribuirse fácilmente con contenedores para evitar problemas de versiones y de configuración. 
+
+Se maquetó el sistema pensando en un dashboard moderno y fácil de utilizar.
+
 ---
 
 ### Requisitos del Sistema
