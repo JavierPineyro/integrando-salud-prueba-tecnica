@@ -1,170 +1,161 @@
-¡Perfecto! Gracias por señalar los puntos importantes. Vamos a corregir esas dos cosas:
+# Prueba Técnica: Herramienta de Gestión para Clínica
 
-No usar latest en las imágenes de Docker: Es muy importante usar versiones exactas para evitar problemas futuros cuando las imágenes se actualicen. Usaremos versiones específicas tanto para MySQL como para PHP.
+Este proyecto es una herramienta web para gestionar pacientes y tratamientos médicos de un equipo llamado "PET", desarrollada para la prueba técnica de Integrando Salud. Su propósito es demostrar las habilidades en desarrollo full-stack, con un enfoque en la claridad, organización del código y funcionalidad.
 
-La base de datos debe estar creada antes de hacer las migraciones: Para poder ejecutar las migraciones de Laravel (php artisan migrate), la base de datos debe existir previamente. Por lo tanto, necesitamos una forma de crear la base de datos automáticamente al iniciar el contenedor de MySQL. Esto lo podemos hacer utilizando un script de inicialización para MySQL.
+---
 
-Paso 1: Usar versiones específicas de las imágenes de Docker
+### Requisitos del Sistema
 
-Voy a corregir el archivo docker-compose.yml para que use versiones específicas de las imágenes de Docker.
+Para poder ejecutar esta aplicación, necesitarás los siguientes componentes instalados en tu sistema:
 
-Docker Compose actualizado con versiones específicas:
+* **Docker y Docker Compose**: El proyecto se ejecuta en contenedores. El archivo `docker-compose.yml` se encarga de construir la imagen de Laravel y de levantar el servidor web y la base de datos MySQL.
+* **Node.js y npm**: Se necesita una versión reciente de Node.js (20 o superior es recomendable) para instalar y ejecutar el servidor web del frontend, ya que se usa `npx http-server`.
 
-version: '3.8'
+---
 
-services:
-  # Backend - Laravel
-  backend:
-    build:
-      context: ./backend  # Directorio del backend (Laravel)
-    container_name: laravel-backend
-    restart: unless-stopped
-    volumes:
-      - ./backend:/var/www/html  # Mapea la carpeta local ./backend a /var/www/html en el contenedor
-    environment:
-      - DB_CONNECTION=mysql
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_DATABASE=integrando-db
-      - DB_USERNAME=admin
-      - DB_PASSWORD=""
-    depends_on:
-      - db
-    networks:
-      - app-network
-    command: bash -c "composer install && php-fpm"  # Comando para ejecutar Laravel
-    ports:
-      - "8000:8000"  # Puerto del backend (Laravel)
+### Instalación y Configuración
 
-  # Frontend - Astro
-  frontend:
-    image: node:22  # Usamos la imagen de Node.js 22 LTS
-    container_name: astro-frontend
-    working_dir: /var/www/astro
-    volumes:
-      - ./front:/var/www/astro  # Mapea la carpeta local ./front a /var/www/astro en el contenedor
-    command: ["npm", "run", "dev"]  # Comando para ejecutar el servidor de desarrollo de Astro
-    networks:
-      - app-network
-    ports:
-      - "3000:3000"  # Puerto del frontend (Astro)
+1.  **Clonar el repositorio**:
+    ```bash
+    git clone [https://github.com/JavierPineyro/integrando-salud-prueba-tecnica](https://github.com/JavierPineyro/integrando-salud-prueba-tecnica)
+    cd integrando-salud-prueba-tecnica
+    ```
 
-  # Base de datos - MySQL 
-  db:
-    image: mysql:5.7  # Usamos MySQL 5.7 para la base de datos
-    container_name: mysql-db
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword  # Contraseña de root
-      MYSQL_DATABASE: integrando-db  # Nombre de la base de datos
-      MYSQL_USER: admin  # Usuario de la base de datos
-      MYSQL_PASSWORD: ""  # Contraseña del usuario (vacía según tu solicitud)
-    networks:
-      - app-network
-    volumes:
-      - mysql_data:/var/lib/mysql  # Volumen para persistir los datos de MySQL
-    ports:
-      - "3306:3306"  # Puerto para conectarse a MySQL
+2.  **Levantar los contenedores**:
+    * Desde la raíz del proyecto, ejecuta el siguiente comando para construir las imágenes de Docker y levantar los contenedores del backend y la base de datos:
+        ```bash
+        docker-compose up -d --build
+        ```
+    * Si encuentras problemas de permisos, prueba con `sudo docker-compose up -d --build`.
 
-networks:
-  app-network:
-    driver: bridge  # Red para conectar los servicios entre sí
+3.  **Verificar el estado de la base de datos**:
+    * Es importante esperar a que la base de datos se configure por completo. Este proceso puede tardar entre 3 y 4 minutos. Puedes verificar su estado ejecutando:
+        ```bash
+        docker-compose ps
+        ```
+    * La base de datos estará lista cuando el estado de su contenedor muestre **(healthy)**. Si dice `(starting...)`, debes seguir esperando.
 
-volumes:
-  mysql_data: {}  # Volumen para persistir los datos de MySQL
+4.  **Ejecutar las migraciones de la base de datos**:
+    * Una vez que la base de datos esté disponible, accede al contenedor del backend y ejecuta las migraciones para crear las tablas y poblar la base de datos con datos de prueba:
+        ```bash
+        docker-compose exec backend php artisan migrate --seed
+        ```
 
+5.  **Levantar el servidor del frontend**:
+    * Accede a la carpeta del frontend y levanta el servidor HTTP.
+        ```bash
+        cd frontend
+        npm start     //<-- esto ejecuta el script en package.json
+        ```
+    * **Nota**: Al ser un frontend con HTML, CSS y JavaScript puros, no se requiere instalación de dependencias, pero sí se necesita un servidor HTTP para evitar problemas de CORS y acceso a archivos.
 
+6.  **Acceder a la aplicación**:
+    * La aplicación estará disponible en `http://localhost:3000` (o el puerto que te indique `http-server`).
 
+---
 
-Paso 2: Crear un script para inicializar la base de datos
+### Estructura de Carpetas
 
-Para que la base de datos se cree automáticamente al arrancar el contenedor, vamos a crear un archivo SQL de inicialización. Puedes colocar este archivo en una carpeta init-db dentro de la raíz de tu proyecto, así:
+```bash
+integrando-salud-prueba-tecnica/
+├── backend/                  # Proyecto Laravel
+│   ├── ...
+├── docker-compose.yml
+├── frontend/
+│   ├── src/                  # Archivos fuente del frontend
+│   │   ├── assets/
+│   │   ├── pages/
+│   │   └── index.html
+│   ├── package.json
+│   └── README.md
+└── README.md
+```
 
-prueba-tecnica/
-├── backend/
-│   ├── Dockerfile
-│   └── (tu código Laravel)
-├── front/
-│   └── (tu proyecto Astro)
-├── init-db/
-│   └── create-database.sql   <-----------
-└── docker-compose.yml
+---
 
+### Tecnologías Utilizadas
 
-Contenido del archivo init-db/create-database.sql:
+* **Backend**: PHP 8.3.6 y Laravel.
+* **Frontend**: HTML, CSS y JavaScript puros.
+* **Base de Datos**: MySQL.
+* **Contenedores**: Docker.
+* **Servidor Frontend**: `http-server`.
+### Bibliotecas Utilizadas
+* **Validaciones**: Zod.
+* **Notificaciones**: Toaster UI.
+---
 
--- Crear la base de datos si no existe
-CREATE DATABASE IF NOT EXISTS integrando-db;
+### Funcionalidades Implementadas
 
--- Crear el usuario si no existe
-CREATE USER IF NOT EXISTS 'admin'@'%' IDENTIFIED BY '';
-GRANT ALL PRIVILEGES ON integrando-db.* TO 'admin'@'%';
+* **Gestión de Pacientes**:
+    * Alta, modificación y listado de pacientes.
+    * Formulario para registrar y editar pacientes.
+    * Listado de pacientes en una tabla, con filtro por apellido o DNI.
+* **Gestión de Tipos de PET**:
+    * Alta, baja, modificación y listado de tipos de PET.
+    * Formulario para registrar nombre descriptivo, color, intensidad, duración, ayuno y observaciones.
+    * Listado que permite ver los tipos de pet activos por defecto y también los inactivos.
+* **Gestión de Tratamientos**:
+    * Desde el listado de pacientes, se puede acceder al listado de tratamientos de un paciente.
+    * El listado de tratamientos muestra el historial de tratamientos.
+    * Botón para agregar nuevos tratamientos.
+    * Formulario para cargar un tratamiento, permitiendo seleccionar un tipo de pet activo y la fecha de inicio.
 
--- Asegurarse de que los privilegios estén aplicados
-FLUSH PRIVILEGES;
+---
 
-Este script de inicialización se ejecutará cuando el contenedor de MySQL arranque por primera vez y creará la base de datos integrando-db junto con el usuario admin.
+### Detener los Contenedores
 
-4. Configurar el archivo .env de Laravel
+Una vez que hayas terminado de usar la aplicación, puedes detener los contenedores y limpiar los recursos.
 
-En la carpeta backend, asegúrate de que el archivo .env de Laravel tenga la siguiente configuración para conectar con la base de datos:
+* Para detener los contenedores sin eliminar los datos de la base de datos, navega a la raíz del proyecto y ejecuta:
+    ```bash
+    docker-compose down
+    ```
+    Con este comando, los datos de la base de datos persisten, lo que te permite volver a levantar los servicios más tarde con `docker-compose up -d`.
 
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=integrando-db
-DB_USERNAME=admin
-DB_PASSWORD=
+* Para detener y eliminar completamente los contenedores, las redes y los volúmenes con los datos de la base de datos, usa la siguiente opción:
+    ```bash
+    docker-compose down -v
+    ```
+    La opción `-v` es crucial porque elimina los volúmenes de datos. Si usas este comando y luego quieres volver a levantar la aplicación, tendrás que repetir todos los pasos de instalación, incluyendo las migraciones y los `seeders`, para recrear las tablas y los datos.
 
+### Contacto
 
-5. Levantar los contenedores
-
-Para levantar los contenedores y crear la base de datos, ejecuta el siguiente comando en la raíz de tu proyecto:
-
-docker-compose up -d
-
-Esto descargará las imágenes necesarias y creará los contenedores.
-
-6. Ejecutar las migraciones de Laravel
-
-Una vez que los contenedores estén en funcionamiento y la base de datos esté disponible, ejecuta las migraciones de Laravel:
-
-docker-compose exec backend php artisan migrate
-
-7. Acceder a la aplicación
-
-Para Laravel (backend), puedes acceder a tu aplicación en http://localhost.
-
-Para Astro (frontend), puedes acceder a la aplicación en http://localhost:3000.
+Para cualquier consulta o duda sobre el proyecto, no dudes en contactarme.
+**Dario Javier Piñeyro**
 
 
-# 1. Levantar los contenedores en segundo plano (modo detached)
-# Esto inicia los contenedores definidos en el archivo docker-compose.yml sin bloquear la terminal.
-docker-compose up -d  # -d significa "detached", lo que permite que los contenedores se ejecuten en segundo plano.
+### EXTRAS
+TODO: TAREAS REALIZADAS
 
-# 2. Bajar los contenedores y eliminar redes y volúmenes (no utilizados)
-# Esto detiene todos los contenedores y elimina las redes, contenedores y volúmenes definidos en docker-compose.yml.
-docker-compose down  # Esto detiene los contenedores y elimina redes y volúmenes (por defecto).
+## Pacientes
+[x] maquetar listar pacientes page 
+[x] hidratar página pacientes page
+[x] maquetar formulario de crear paciente
+[x] hidratar formulario crear paciente
+[x] maquetar formulario editar paciente
+[x] hidratar formulario editar paciente
+[x] agregar que show endpoint devuelva al paciente Y sus tratamientos
+[x] maquetar pagína info paciente
 
-# 3. Reconstruir los contenedores y levantar los servicios
-# Si has realizado cambios en la configuración o Dockerfile, este comando vuelve a construir las imágenes y luego levanta los contenedores.
-docker-compose up --build -d  # --build fuerza la reconstrucción de las imágenes antes de levantar los contenedores, -d para ejecutarlos en segundo plano.
+## Pets
+[x] maquetar listar pets page
+[x] hidratar página pets page
+[x] hacer funcionar el boton de activo en tabla pets
+[x] agregar el contador de pets activos/inactivos de listar pets tabla
+[x] maquetar formulario de crear pet
+[x] hidratar formulario de crear pet
+[x] maquetar formulario de editar pet
+[x] hidratar formulario de editar pet
 
-# 4. Verificar el estado de los contenedores activos
-# Este comando muestra el estado actual de los contenedores, como si están funcionando correctamente, sus puertos expuestos y más.
-docker-compose ps  # Muestra el estado de los contenedores (puertos, nombres, etc.).
-
-# 5. Ver los logs de un servicio específico
-# Para ver los logs de un servicio (por ejemplo, el backend de Laravel), usa este comando.
-docker-compose logs backend  # Esto muestra los logs del servicio llamado "backend". Puedes reemplazar "backend" con cualquier otro servicio.
-
-# 6. Ver los logs en tiempo real de un servicio específico
-# Si quieres ver los logs en tiempo real y seguirlos mientras los contenedores están corriendo, usa la opción -f (follow).
-docker-compose logs -f backend  # El flag "-f" sigue los logs en tiempo real. Es útil cuando deseas ver los logs mientras el contenedor está activo.
-
-
-
-
-
+## Tratamiento
+[x] maquetar formulario de crear Tratamiento
+[x] agregar iconos en donde corresponden
+[x] agregar Toaster Ui?
+[x] agregar loader y desabilitar botones en editar forms?
+## Agregar el Service en el backend
+[x] Testear los contenedores del backend de compose
+[x] Agregar los servicios para abstraer logica de los controllers
+[x] Agregar README con pasos del servidor
 
 
