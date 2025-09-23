@@ -8,6 +8,8 @@ El sistema está dividido en /backend (Construido con php y Laravel), el /fronte
 
 Se maquetó el sistema pensando en un dashboard moderno y fácil de utilizar.
 
+![Dashboard Screenshot](./frontend/screenshots/lista-pacientes.png)
+
 ---
 
 ### Requisitos del Sistema
